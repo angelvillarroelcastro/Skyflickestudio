@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 type Lang = "ca" | "es" | "en" | "de";
 
@@ -28,12 +28,12 @@ type Copy = {
   contactEyebrow: string;
   contactTitle: string;
   contactText: string;
-  contactFormTitle: string;
+  formTitle: string;
   namePlaceholder: string;
   emailPlaceholder: string;
   messagePlaceholder: string;
-  featureEmailButton: string;
-  featureWhatsappButton: string;
+  submitButton: string;
+  whatsappButton: string;
   sectorsEyebrow: string;
   sector1: string;
   sector2: string;
@@ -46,7 +46,6 @@ type Copy = {
   email: string;
   instagram: string;
   floatingWhatsapp: string;
-  formSuccessHint: string;
 };
 
 const COPY: Record<Lang, Copy> = {
@@ -81,12 +80,12 @@ const COPY: Record<Lang, Copy> = {
     contactTitle: "Parlem del teu projecte",
     contactText:
       "Si necessites imatge aèria, inspecció tècnica o anàlisi multiespectral, escriu-nos i t'ajudarem a definir la millor solució.",
-    contactFormTitle: "Escriu-nos directament",
+    formTitle: "Escriu-nos directament",
     namePlaceholder: "Nom",
     emailPlaceholder: "Correu electrònic",
     messagePlaceholder: "Explica'ns el teu projecte",
-    featureEmailButton: "Enviar formulari",
-    featureWhatsappButton: "WhatsApp",
+    submitButton: "Enviar formulari",
+    whatsappButton: "WhatsApp",
     sectorsEyebrow: "ÀREES / SECTORS",
     sector1: "Cinema i publicitat",
     sector2: "Arquitectura i immobiliària",
@@ -99,7 +98,6 @@ const COPY: Record<Lang, Copy> = {
     email: "Correu: skyflickesp@gmail.com",
     instagram: "Instagram: @_Skyflick_",
     floatingWhatsapp: "WhatsApp",
-    formSuccessHint: "Et respondrem al més aviat possible.",
   },
   es: {
     navContact: "Contacto",
@@ -132,12 +130,12 @@ const COPY: Record<Lang, Copy> = {
     contactTitle: "Hablemos de tu proyecto",
     contactText:
       "Si necesitas imagen aérea, inspección técnica o análisis multiespectral, escríbenos y te ayudaremos a definir la mejor solución.",
-    contactFormTitle: "Escríbenos directamente",
+    formTitle: "Escríbenos directamente",
     namePlaceholder: "Nombre",
     emailPlaceholder: "Correo electrónico",
     messagePlaceholder: "Cuéntanos tu proyecto",
-    featureEmailButton: "Enviar formulario",
-    featureWhatsappButton: "WhatsApp",
+    submitButton: "Enviar formulario",
+    whatsappButton: "WhatsApp",
     sectorsEyebrow: "ÁREAS / SECTORES",
     sector1: "Cine y publicidad",
     sector2: "Arquitectura e inmobiliaria",
@@ -150,7 +148,6 @@ const COPY: Record<Lang, Copy> = {
     email: "Correo: skyflickesp@gmail.com",
     instagram: "Instagram: @_Skyflick_",
     floatingWhatsapp: "WhatsApp",
-    formSuccessHint: "Te responderemos lo antes posible.",
   },
   en: {
     navContact: "Contact",
@@ -183,12 +180,12 @@ const COPY: Record<Lang, Copy> = {
     contactTitle: "Let’s talk about your project",
     contactText:
       "If you need aerial imaging, technical inspection or multispectral analysis, write to us and we will help define the best solution.",
-    contactFormTitle: "Write to us directly",
+    formTitle: "Write to us directly",
     namePlaceholder: "Name",
     emailPlaceholder: "Email",
     messagePlaceholder: "Tell us about your project",
-    featureEmailButton: "Send form",
-    featureWhatsappButton: "WhatsApp",
+    submitButton: "Send form",
+    whatsappButton: "WhatsApp",
     sectorsEyebrow: "AREAS / SECTORS",
     sector1: "Film and advertising",
     sector2: "Architecture and real estate",
@@ -201,7 +198,6 @@ const COPY: Record<Lang, Copy> = {
     email: "Email: skyflickesp@gmail.com",
     instagram: "Instagram: @_Skyflick_",
     floatingWhatsapp: "WhatsApp",
-    formSuccessHint: "We will get back to you as soon as possible.",
   },
   de: {
     navContact: "Kontakt",
@@ -234,12 +230,12 @@ const COPY: Record<Lang, Copy> = {
     contactTitle: "Erzähl uns von deinem Projekt",
     contactText:
       "Wenn du Luftbild, technische Inspektion oder multispektrale Analyse brauchst, schreib uns und wir definieren die beste Lösung.",
-    contactFormTitle: "Schreib uns direkt",
+    formTitle: "Schreib uns direkt",
     namePlaceholder: "Name",
     emailPlaceholder: "E-Mail",
     messagePlaceholder: "Erzähl uns von deinem Projekt",
-    featureEmailButton: "Formular senden",
-    featureWhatsappButton: "WhatsApp",
+    submitButton: "Formular senden",
+    whatsappButton: "WhatsApp",
     sectorsEyebrow: "BEREICHE / SEKTOREN",
     sector1: "Film und Werbung",
     sector2: "Architektur und Immobilien",
@@ -252,39 +248,56 @@ const COPY: Record<Lang, Copy> = {
     email: "E-Mail: skyflickesp@gmail.com",
     instagram: "Instagram: @_Skyflick_",
     floatingWhatsapp: "WhatsApp",
-    formSuccessHint: "Wir melden uns so schnell wie möglich.",
   },
 };
 
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const update = () => setIsMobile(window.innerWidth < 900);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  return isMobile;
+}
+
+function langButtonStyle(active: boolean): React.CSSProperties {
+  return {
+    background: "transparent",
+    color: "#f5f5f5",
+    border: "none",
+    borderBottom: active ? "2px solid #f5f5f5" : "2px solid transparent",
+    padding: "4px 2px 8px 2px",
+    cursor: "pointer",
+    fontSize: "14px",
+    letterSpacing: "0.08em",
+    transition: "border-color 180ms ease, opacity 180ms ease",
+    opacity: active ? 1 : 0.72,
+  };
+}
+
+function cardStyle(): React.CSSProperties {
+  return {
+    background: "#07131a",
+    borderRadius: "10px",
+    overflow: "hidden",
+    transform: "translateY(0)",
+    transition: "transform 220ms ease, box-shadow 220ms ease, filter 220ms ease",
+    boxShadow: "0 10px 30px rgba(0,0,0,0.18)",
+  };
+}
+
 export default function App() {
   const [lang, setLang] = useState<Lang>("ca");
+  const isMobile = useIsMobile();
   const c = COPY[lang];
 
   useEffect(() => {
-    const inter = document.createElement("link");
-    inter.href =
-      "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap";
-    inter.rel = "stylesheet";
-    document.head.appendChild(inter);
-
-    const mono = document.createElement("link");
-    mono.href =
-      "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap";
-    mono.rel = "stylesheet";
-    document.head.appendChild(mono);
-
     document.documentElement.lang = lang;
-
-    return () => {
-      if (document.head.contains(inter)) document.head.removeChild(inter);
-      if (document.head.contains(mono)) document.head.removeChild(mono);
-    };
   }, [lang]);
-
-  const isMobile = useMemo(() => {
-    if (typeof window === "undefined") return false;
-    return window.innerWidth < 900;
-  }, []);
 
   const services = [
     {
@@ -324,31 +337,25 @@ export default function App() {
       <style>{`
         html { scroll-behavior: smooth; }
         * { box-sizing: border-box; }
-
         body {
           margin: 0;
           background: #030607;
           color: #f5f5f5;
-          font-family: Inter, sans-serif;
+          font-family: Inter, system-ui, sans-serif;
         }
-
         input, textarea, button {
           font: inherit;
         }
-
         input::placeholder, textarea::placeholder {
           color: rgba(255,255,255,0.45);
         }
-
         input:focus, textarea:focus {
           outline: none;
           border-color: rgba(213,186,114,0.8) !important;
           box-shadow: 0 0 0 3px rgba(213,186,114,0.12);
         }
-
         .fade-up { animation: fadeUp 700ms ease both; }
         .fade-up-delay { animation: fadeUp 950ms ease both; }
-
         .card-hover {
           transition: transform 220ms ease, box-shadow 220ms ease, filter 220ms ease;
         }
@@ -357,7 +364,6 @@ export default function App() {
           box-shadow: 0 18px 40px rgba(0,0,0,0.28);
           filter: brightness(1.03);
         }
-
         .button-polish {
           transition: transform 180ms ease, background 180ms ease, border-color 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
           box-shadow: 0 0 0 rgba(213,186,114,0);
@@ -368,14 +374,12 @@ export default function App() {
           border-color: rgba(255,255,255,0.85);
           box-shadow: 0 0 18px rgba(213,186,114,0.18);
         }
-
         .link-polish {
           transition: opacity 180ms ease;
         }
         .link-polish:hover {
           opacity: 0.82;
         }
-
         .floating-whatsapp {
           position: fixed;
           right: 18px;
@@ -395,7 +399,6 @@ export default function App() {
           box-shadow: 0 18px 32px rgba(0,0,0,0.35);
           background: #0f1b20;
         }
-
         @keyframes fadeUp {
           from { opacity: 0; transform: translateY(18px); }
           to { opacity: 1; transform: translateY(0); }
@@ -407,7 +410,6 @@ export default function App() {
         href="https://wa.me/34634562634?text=Hola%20Skyflick,%20me%20interesa%20vuestro%20servicio"
         target="_blank"
         rel="noreferrer"
-        aria-label="WhatsApp"
       >
         {c.floatingWhatsapp}
       </a>
@@ -638,11 +640,7 @@ export default function App() {
               ))}
             </div>
 
-            <div
-              style={{
-                marginTop: isMobile ? "30px" : "42px",
-              }}
-            >
+            <div style={{ marginTop: isMobile ? "30px" : "42px" }}>
               <div
                 style={{
                   color: "#d8d0b0",
@@ -745,16 +743,6 @@ export default function App() {
               >
                 {c.contactText}
               </p>
-
-              <div
-                style={{
-                  marginTop: "24px",
-                  color: "rgba(255,255,255,0.72)",
-                  fontSize: isMobile ? "15px" : "16px",
-                }}
-              >
-                {c.formSuccessHint}
-              </div>
             </div>
 
             <div
@@ -774,7 +762,7 @@ export default function App() {
                   marginBottom: "14px",
                 }}
               >
-                {c.contactFormTitle}
+                {c.formTitle}
               </div>
 
               <form
@@ -859,7 +847,7 @@ export default function App() {
                       cursor: "pointer",
                     }}
                   >
-                    {c.featureEmailButton}
+                    {c.submitButton}
                   </button>
 
                   <a
@@ -879,7 +867,7 @@ export default function App() {
                       boxSizing: "border-box",
                     }}
                   >
-                    {c.featureWhatsappButton}
+                    {c.whatsappButton}
                   </a>
                 </div>
               </form>
