@@ -661,9 +661,7 @@ export default function App() {
               >
                 <a
                   className="button-polish"
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=skyflickesp@gmail.com&su=Skyflick%20Studio%20-%20Nou%20projecte&body=Hola%20Skyflick%20Studio,%0A%0AM%27agradaria%20rebre%20informaci%C3%B3%20sobre..."
-                  target="_blank"
-                  rel="noreferrer"
+                  href="mailto:skyflickesp@gmail.com?subject=Skyflick%20Studio%20-%20Nou%20projecte"
                   style={{
                     display: "inline-block",
                     color: "#fff",
@@ -790,16 +788,19 @@ export default function App() {
                   {c.phone}
                 </div>
 
-                <div
+                <a
+                  href="mailto:skyflickesp@gmail.com?subject=Skyflick%20Studio%20-%20Nou%20projecte"
+                  className="link-polish"
                   style={{
                     fontFamily: "'JetBrains Mono', monospace",
                     color: "#e5e7eb",
                     fontSize: isMobile ? "15px" : "17px",
+                    textDecoration: "none",
                     letterSpacing: "0.03em"
                   }}
                 >
                   {c.email}
-                </div>
+                </a>
 
                 <a
                   className="link-polish"
