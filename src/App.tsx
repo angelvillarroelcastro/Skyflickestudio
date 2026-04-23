@@ -73,7 +73,7 @@ const COPY: Record<Lang, Copy> = {
     sector4: "Medi ambient i territori",
     sector5: "Esport i camps de golf",
     contactEyebrow: "CONTACTE",
-    zone: "Zona: Felanitx · Mallorca",
+    zone: "Zona: Felanitx · Mallorca · Illes Balears",
     phone: "Telèfon: +34 634 562 634",
     email: "Correu: skyflickesp@gmail.com",
     instagram: "Instagram: @_Skyflick_",
@@ -84,7 +84,7 @@ const COPY: Record<Lang, Copy> = {
     stat3Title: "DADES PRECISSES",
     stat3Text: "Tecnologia avançada per a anàlisis fiables i visuals.",
     stat4Title: "ENTREGA ÀGIL",
-    stat4Text: "Processament eficient i entrega adaptada a cada projecte.",
+    stat4Text: "Processament eficient i entrega adaptada a cada projecte."
   },
   es: {
     navContact: "Contacta",
@@ -117,7 +117,7 @@ const COPY: Record<Lang, Copy> = {
     sector4: "Medio ambiente y territorio",
     sector5: "Deporte y campos de golf",
     contactEyebrow: "CONTACTO",
-    zone: "Zona: Felanitx · Mallorca",
+    zone: "Zona: Felanitx · Mallorca · Islas Baleares",
     phone: "Teléfono: +34 634 562 634",
     email: "Correo: skyflickesp@gmail.com",
     instagram: "Instagram: @_Skyflick_",
@@ -128,7 +128,7 @@ const COPY: Record<Lang, Copy> = {
     stat3Title: "DATOS PRECISOS",
     stat3Text: "Tecnología avanzada para análisis fiables y visuales.",
     stat4Title: "ENTREGA ÁGIL",
-    stat4Text: "Procesamiento eficiente y entrega adaptada a cada proyecto.",
+    stat4Text: "Procesamiento eficiente y entrega adaptada a cada proyecto."
   },
   en: {
     navContact: "Contact",
@@ -161,7 +161,7 @@ const COPY: Record<Lang, Copy> = {
     sector4: "Environment and territory",
     sector5: "Sports and golf courses",
     contactEyebrow: "CONTACT",
-    zone: "Area: Felanitx · Mallorca",
+    zone: "Area: Felanitx · Mallorca · Balearic Islands",
     phone: "Phone: +34 634 562 634",
     email: "Email: skyflickesp@gmail.com",
     instagram: "Instagram: @_Skyflick_",
@@ -172,7 +172,7 @@ const COPY: Record<Lang, Copy> = {
     stat3Title: "PRECISE DATA",
     stat3Text: "Advanced technology for reliable visual analysis.",
     stat4Title: "FAST DELIVERY",
-    stat4Text: "Efficient processing and delivery adapted to each project.",
+    stat4Text: "Efficient processing and delivery adapted to each project."
   },
   de: {
     navContact: "Kontakt",
@@ -205,7 +205,7 @@ const COPY: Record<Lang, Copy> = {
     sector4: "Umwelt und Territorium",
     sector5: "Sport und Golfplätze",
     contactEyebrow: "KONTAKT",
-    zone: "Gebiet: Felanitx · Mallorca",
+    zone: "Gebiet: Felanitx · Mallorca · Balearen",
     phone: "Telefon: +34 634 562 634",
     email: "E-Mail: skyflickesp@gmail.com",
     instagram: "Instagram: @_Skyflick_",
@@ -214,11 +214,10 @@ const COPY: Record<Lang, Copy> = {
     stat2Title: "4K-QUALITÄT",
     stat2Text: "Hochauflösende Erfassung für professionelle Ergebnisse.",
     stat3Title: "PRÄZISE DATEN",
-    stat3Text:
-      "Fortschrittliche Technologie für zuverlässige visuelle Analysen.",
+    stat3Text: "Fortschrittliche Technologie für zuverlässige visuelle Analysen.",
     stat4Title: "SCHNELLE LIEFERUNG",
-    stat4Text: "Effiziente Bearbeitung und Lieferung passend zum Projekt.",
-  },
+    stat4Text: "Effiziente Bearbeitung und Lieferung passend zum Projekt."
+  }
 };
 
 function useIsMobile() {
@@ -245,7 +244,7 @@ function langButtonStyle(active: boolean): React.CSSProperties {
     fontSize: "14px",
     letterSpacing: "0.08em",
     transition: "border-color 180ms ease, opacity 180ms ease",
-    opacity: active ? 1 : 0.72,
+    opacity: active ? 1 : 0.72
   };
 }
 
@@ -255,9 +254,8 @@ function cardStyle(): React.CSSProperties {
     borderRadius: "8px",
     overflow: "hidden",
     transform: "translateY(0)",
-    transition:
-      "transform 220ms ease, box-shadow 220ms ease, filter 220ms ease",
-    boxShadow: "0 10px 30px rgba(0,0,0,0.18)",
+    transition: "transform 220ms ease, box-shadow 220ms ease, filter 220ms ease",
+    boxShadow: "0 10px 30px rgba(0,0,0,0.18)"
   };
 }
 
@@ -290,22 +288,22 @@ export default function App() {
         text: c.service1Text,
         footer: c.service1Footer,
         image:
-          "https://plus.unsplash.com/premium_photo-1696273224432-51e74c998de2?q=80&w=872&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://plus.unsplash.com/premium_photo-1696273224432-51e74c998de2?q=80&w=872&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
         title: c.service2Title,
         text: c.service2Text,
         footer: c.service2Footer,
         image:
-          "https://aerocamaras.es/wp-content/uploads/2019/04/Presa-Aerocamaras.jpg",
+          "https://aerocamaras.es/wp-content/uploads/2019/04/Presa-Aerocamaras.jpg"
       },
       {
         title: c.service3Title,
         text: c.service3Text,
         footer: c.service3Footer,
         image:
-          "https://eos.com/wp-content/uploads/2024/03/multispectral-image-index-ndvi.png.webp",
-      },
+          "https://eos.com/wp-content/uploads/2024/03/multispectral-image-index-ndvi.png.webp"
+      }
     ],
     [c]
   );
@@ -317,7 +315,7 @@ export default function App() {
       style={{
         fontFamily: "Inter, sans-serif",
         background: "#030607",
-        color: "#f5f5f5",
+        color: "#f5f5f5"
       }}
     >
       <section
@@ -325,7 +323,7 @@ export default function App() {
           minHeight: isMobile ? "auto" : "820px",
           position: "relative",
           background:
-            "linear-gradient(90deg, rgba(2,7,10,0.88) 0%, rgba(2,7,10,0.62) 36%, rgba(2,7,10,0.22) 62%), url('https://images.pexels.com/photos/36532574/pexels-photo-36532574.jpeg') center/cover no-repeat",
+            "linear-gradient(90deg, rgba(2,7,10,0.88) 0%, rgba(2,7,10,0.62) 36%, rgba(2,7,10,0.22) 62%), url('https://images.pexels.com/photos/36532574/pexels-photo-36532574.jpeg') center/cover no-repeat"
         }}
       >
         <div
@@ -337,7 +335,7 @@ export default function App() {
             justifyContent: "space-between",
             alignItems: "flex-start",
             gap: "20px",
-            flexDirection: isMobile ? "column" : "row",
+            flexDirection: isMobile ? "column" : "row"
           }}
         >
           <div>
@@ -347,7 +345,7 @@ export default function App() {
                 lineHeight: 0.9,
                 fontWeight: 800,
                 letterSpacing: "-0.06em",
-                transition: "transform 220ms ease",
+                transition: "transform 220ms ease"
               }}
             >
               Skyflick
@@ -358,7 +356,7 @@ export default function App() {
                 letterSpacing: isMobile ? "0.28em" : "0.42em",
                 marginTop: "10px",
                 marginLeft: isMobile ? "68px" : "150px",
-                opacity: 0.94,
+                opacity: 0.94
               }}
             >
               STUDIO
@@ -371,38 +369,26 @@ export default function App() {
               alignItems: isMobile ? "flex-start" : "center",
               gap: isMobile ? "18px" : "28px",
               flexDirection: isMobile ? "column" : "row",
-              width: isMobile ? "100%" : "auto",
+              width: isMobile ? "100%" : "auto"
             }}
           >
             <div
               style={{
                 display: "flex",
                 gap: isMobile ? "16px" : "22px",
-                flexWrap: "wrap",
+                flexWrap: "wrap"
               }}
             >
-              <button
-                onClick={() => setLang("ca")}
-                style={langButtonStyle(lang === "ca")}
-              >
+              <button onClick={() => setLang("ca")} style={langButtonStyle(lang === "ca")}>
                 CA
               </button>
-              <button
-                onClick={() => setLang("es")}
-                style={langButtonStyle(lang === "es")}
-              >
+              <button onClick={() => setLang("es")} style={langButtonStyle(lang === "es")}>
                 ES
               </button>
-              <button
-                onClick={() => setLang("en")}
-                style={langButtonStyle(lang === "en")}
-              >
+              <button onClick={() => setLang("en")} style={langButtonStyle(lang === "en")}>
                 EN
               </button>
-              <button
-                onClick={() => setLang("de")}
-                style={langButtonStyle(lang === "de")}
-              >
+              <button onClick={() => setLang("de")} style={langButtonStyle(lang === "de")}>
                 DE
               </button>
             </div>
@@ -419,7 +405,7 @@ export default function App() {
                 textAlign: "center",
                 boxSizing: "border-box",
                 transition:
-                  "background 220ms ease, transform 220ms ease, border-color 220ms ease",
+                  "background 220ms ease, transform 220ms ease, border-color 220ms ease"
               }}
             >
               {c.navContact}
@@ -431,13 +417,13 @@ export default function App() {
           style={{
             maxWidth: "1520px",
             margin: "0 auto",
-            padding: isMobile ? "8px 20px 36px 20px" : "18px 54px 54px 54px",
+            padding: isMobile ? "8px 20px 36px 20px" : "18px 54px 54px 54px"
           }}
         >
           <div
             style={{
               maxWidth: isMobile ? "100%" : "760px",
-              marginTop: isMobile ? "18px" : "34px",
+              marginTop: isMobile ? "18px" : "34px"
             }}
           >
             <h1
@@ -446,7 +432,7 @@ export default function App() {
                 lineHeight: 1.05,
                 fontWeight: 500,
                 letterSpacing: "-0.05em",
-                margin: 0,
+                margin: 0
               }}
             >
               {c.heroTitle}
@@ -457,7 +443,7 @@ export default function App() {
                 lineHeight: 1.55,
                 color: "rgba(255,255,255,0.86)",
                 maxWidth: isMobile ? "100%" : "760px",
-                marginTop: "20px",
+                marginTop: "20px"
               }}
             >
               {c.heroText}
@@ -470,14 +456,14 @@ export default function App() {
         style={{
           background: "#041015",
           padding: isMobile ? "22px 0 36px 0" : "26px 0 56px 0",
-          borderTop: "1px solid rgba(255,255,255,0.08)",
+          borderTop: "1px solid rgba(255,255,255,0.08)"
         }}
       >
         <div
           style={{
             maxWidth: "1520px",
             margin: "0 auto",
-            padding: isMobile ? "0 20px" : "0 54px",
+            padding: isMobile ? "0 20px" : "0 54px"
           }}
         >
           <div
@@ -485,14 +471,14 @@ export default function App() {
               display: "flex",
               alignItems: "center",
               gap: "18px",
-              marginBottom: isMobile ? "22px" : "28px",
+              marginBottom: isMobile ? "22px" : "28px"
             }}
           >
             <div
               style={{
                 color: "#d8d0b0",
                 fontSize: isMobile ? "13px" : "15px",
-                letterSpacing: "0.2em",
+                letterSpacing: "0.2em"
               }}
             >
               {c.servicesEyebrow}
@@ -501,7 +487,7 @@ export default function App() {
               style={{
                 flex: 1,
                 height: "1px",
-                background: "rgba(255,255,255,0.16)",
+                background: "rgba(255,255,255,0.16)"
               }}
             />
           </div>
@@ -510,7 +496,7 @@ export default function App() {
             style={{
               display: "grid",
               gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr",
-              gap: isMobile ? "18px" : "28px",
+              gap: isMobile ? "18px" : "28px"
             }}
           >
             {services.map((card) => (
@@ -519,18 +505,16 @@ export default function App() {
                   style={{
                     height: isMobile ? "220px" : "278px",
                     background: `linear-gradient(rgba(0,0,0,0.16), rgba(0,0,0,0.24)), url('${card.image}') center/cover no-repeat`,
-                    transition: "transform 300ms ease, filter 300ms ease",
+                    transition: "transform 300ms ease, filter 300ms ease"
                   }}
                 />
-                <div
-                  style={{ padding: isMobile ? "20px" : "26px 22px 24px 22px" }}
-                >
+                <div style={{ padding: isMobile ? "20px" : "26px 22px 24px 22px" }}>
                   <h3
                     style={{
                       fontSize: isMobile ? "22px" : "24px",
                       fontWeight: 500,
                       margin: "0 0 12px 0",
-                      letterSpacing: "-0.03em",
+                      letterSpacing: "-0.03em"
                     }}
                   >
                     {card.title}
@@ -540,7 +524,7 @@ export default function App() {
                       color: "rgba(255,255,255,0.84)",
                       fontSize: isMobile ? "16px" : "17px",
                       lineHeight: 1.62,
-                      margin: 0,
+                      margin: 0
                     }}
                   >
                     {card.text}
@@ -550,7 +534,7 @@ export default function App() {
                       marginTop: "18px",
                       color: "#d5ba72",
                       fontSize: isMobile ? "12px" : "14px",
-                      letterSpacing: "0.12em",
+                      letterSpacing: "0.12em"
                     }}
                   >
                     {card.footer}
@@ -566,19 +550,19 @@ export default function App() {
               gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(4, 1fr)",
               gap: isMobile ? "18px" : "36px",
               marginTop: isMobile ? "26px" : "40px",
-              padding: isMobile ? "10px 0 0 0" : "26px 14px 0 14px",
+              padding: isMobile ? "10px 0 0 0" : "26px 14px 0 14px"
             }}
           >
             {[
               [c.stat1Title, c.stat1Text],
               [c.stat2Title, c.stat2Text],
               [c.stat3Title, c.stat3Text],
-              [c.stat4Title, c.stat4Text],
+              [c.stat4Title, c.stat4Text]
             ].map(([title, text]) => (
               <div
                 key={title}
                 style={{
-                  transition: "transform 220ms ease, opacity 220ms ease",
+                  transition: "transform 220ms ease, opacity 220ms ease"
                 }}
               >
                 <div
@@ -586,7 +570,7 @@ export default function App() {
                     color: "#f0d38c",
                     fontSize: isMobile ? "13px" : "15px",
                     letterSpacing: "0.08em",
-                    marginBottom: "10px",
+                    marginBottom: "10px"
                   }}
                 >
                   {title}
@@ -595,7 +579,7 @@ export default function App() {
                   style={{
                     color: "rgba(255,255,255,0.72)",
                     fontSize: isMobile ? "15px" : "16px",
-                    lineHeight: 1.55,
+                    lineHeight: 1.55
                   }}
                 >
                   {text}
@@ -611,8 +595,8 @@ export default function App() {
         style={{
           minHeight: isMobile ? "auto" : "520px",
           background:
-            "linear-gradient(90deg, rgba(3,12,16,0.84) 0%, rgba(3,12,16,0.5) 35%, rgba(3,12,16,0.12) 62%), url('https://images.pexels.com/photos/355465/pexels-photo-355465.jpeg?auto=compress&cs=tinysrgb&w=1800') center/cover no-repeat",
-          padding: isMobile ? "44px 0" : "70px 0",
+            "linear-gradient(90deg, rgba(3,12,16,0.84) 0%, rgba(3,12,16,0.5) 35%, rgba(3,12,16,0.12) 62%), url('https://images.pexels.com/photos/975771/pexels-photo-975771.jpeg') center/cover no-repeat",
+          padding: isMobile ? "44px 0" : "70px 0"
         }}
       >
         <div
@@ -623,7 +607,7 @@ export default function App() {
             display: "grid",
             gridTemplateColumns: isMobile ? "1fr" : "1.2fr 0.8fr",
             gap: isMobile ? "24px" : "40px",
-            alignItems: "end",
+            alignItems: "end"
           }}
         >
           <div>
@@ -632,7 +616,7 @@ export default function App() {
                 color: "#d5ba72",
                 fontSize: isMobile ? "13px" : "14px",
                 letterSpacing: "0.18em",
-                marginBottom: "16px",
+                marginBottom: "16px"
               }}
             >
               {c.featureEyebrow}
@@ -644,7 +628,7 @@ export default function App() {
                 fontWeight: 500,
                 letterSpacing: "-0.05em",
                 maxWidth: "720px",
-                margin: 0,
+                margin: 0
               }}
             >
               {c.featureTitle}
@@ -655,7 +639,7 @@ export default function App() {
                 fontSize: isMobile ? "17px" : "18px",
                 lineHeight: 1.7,
                 maxWidth: "740px",
-                marginTop: "20px",
+                marginTop: "20px"
               }}
             >
               {c.featureText}
@@ -665,11 +649,11 @@ export default function App() {
                 display: "flex",
                 gap: "14px",
                 flexWrap: "wrap",
-                marginTop: "24px",
+                marginTop: "24px"
               }}
             >
               <a
-                href="mailto:skyflickesp@gmail.com?subject=Skyflick%20Studio"
+                href="mailto:skyflickesp@gmail.com?subject=Skyflick%20Studio%20-%20Nou%20projecte&body=Hola%20Skyflick%20Studio,%0D%0A%0D%0AM'agradaria%20rebre%20informaci%C3%B3%20sobre..."
                 style={{
                   display: "inline-block",
                   color: "#fff",
@@ -681,7 +665,7 @@ export default function App() {
                   width: isMobile ? "100%" : "auto",
                   textAlign: "center",
                   boxSizing: "border-box",
-                  transition: "background 220ms ease, transform 220ms ease",
+                  transition: "background 220ms ease, transform 220ms ease"
                 }}
               >
                 {c.featureEmailButton}
@@ -699,7 +683,7 @@ export default function App() {
                   width: isMobile ? "100%" : "auto",
                   textAlign: "center",
                   boxSizing: "border-box",
-                  transition: "background 220ms ease, transform 220ms ease",
+                  transition: "background 220ms ease, transform 220ms ease"
                 }}
               >
                 {c.featureWhatsappButton}
@@ -713,7 +697,7 @@ export default function App() {
               border: "1px solid rgba(255,255,255,0.08)",
               borderRadius: "10px",
               padding: isMobile ? "22px 20px" : "30px 28px",
-              transition: "transform 220ms ease, background 220ms ease",
+              transition: "transform 220ms ease, background 220ms ease"
             }}
           >
             <div
@@ -721,7 +705,7 @@ export default function App() {
                 color: "rgba(255,255,255,0.62)",
                 fontSize: isMobile ? "13px" : "14px",
                 letterSpacing: "0.18em",
-                marginBottom: "18px",
+                marginBottom: "18px"
               }}
             >
               ÀREES / SECTORS
@@ -731,7 +715,7 @@ export default function App() {
                 color: "rgba(255,255,255,0.72)",
                 fontSize: isMobile ? "14px" : "16px",
                 lineHeight: 1.8,
-                letterSpacing: "0.03em",
+                letterSpacing: "0.03em"
               }}
             >
               {sectorsLine}
@@ -744,7 +728,7 @@ export default function App() {
         style={{
           background: "#02080b",
           padding: isMobile ? "32px 0" : "40px 0",
-          borderTop: "1px solid rgba(255,255,255,0.08)",
+          borderTop: "1px solid rgba(255,255,255,0.08)"
         }}
       >
         <div
@@ -757,7 +741,7 @@ export default function App() {
             alignItems: isMobile ? "flex-start" : "end",
             gap: "30px",
             flexWrap: "wrap",
-            flexDirection: isMobile ? "column" : "row",
+            flexDirection: isMobile ? "column" : "row"
           }}
         >
           <div>
@@ -767,20 +751,18 @@ export default function App() {
                 fontSize: isMobile ? "12px" : "13px",
                 letterSpacing: "0.25em",
                 marginBottom: "18px",
-                fontWeight: 500,
+                fontWeight: 500
               }}
             >
               {c.contactEyebrow}
             </div>
-            <div
-              style={{ display: "flex", flexDirection: "column", gap: "10px" }}
-            >
+            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
               <div
                 style={{
                   fontFamily: "'JetBrains Mono', monospace",
                   color: "#e5e7eb",
                   fontSize: isMobile ? "15px" : "17px",
-                  letterSpacing: "0.03em",
+                  letterSpacing: "0.03em"
                 }}
               >
                 {c.zone}
@@ -790,7 +772,7 @@ export default function App() {
                   fontFamily: "'JetBrains Mono', monospace",
                   color: "#e5e7eb",
                   fontSize: isMobile ? "15px" : "17px",
-                  letterSpacing: "0.03em",
+                  letterSpacing: "0.03em"
                 }}
               >
                 {c.phone}
@@ -800,7 +782,7 @@ export default function App() {
                   fontFamily: "'JetBrains Mono', monospace",
                   color: "#e5e7eb",
                   fontSize: isMobile ? "15px" : "17px",
-                  letterSpacing: "0.03em",
+                  letterSpacing: "0.03em"
                 }}
               >
                 {c.email}
@@ -813,7 +795,7 @@ export default function App() {
                   fontSize: isMobile ? "15px" : "17px",
                   textDecoration: "none",
                   letterSpacing: "0.03em",
-                  transition: "opacity 180ms ease",
+                  transition: "opacity 180ms ease"
                 }}
               >
                 {c.instagram}
@@ -828,7 +810,7 @@ export default function App() {
                 lineHeight: 0.9,
                 fontWeight: 800,
                 letterSpacing: "-0.06em",
-                color: "rgba(255,255,255,0.12)",
+                color: "rgba(255,255,255,0.12)"
               }}
             >
               Skyflick
@@ -838,7 +820,7 @@ export default function App() {
                 fontSize: isMobile ? "13px" : "18px",
                 letterSpacing: isMobile ? "0.28em" : "0.42em",
                 color: "rgba(255,255,255,0.2)",
-                marginTop: "10px",
+                marginTop: "10px"
               }}
             >
               STUDIO
@@ -847,7 +829,7 @@ export default function App() {
               style={{
                 marginTop: "18px",
                 color: "rgba(255,255,255,0.4)",
-                fontSize: isMobile ? "14px" : "16px",
+                fontSize: isMobile ? "14px" : "16px"
               }}
             >
               © 2024 Skyflick Studio
@@ -858,3 +840,4 @@ export default function App() {
     </div>
   );
 }
+ this i can paste in github?
