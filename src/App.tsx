@@ -84,7 +84,7 @@ const COPY: Record<Lang, Copy> = {
     stat3Title: "DADES PRECISSES",
     stat3Text: "Tecnologia avançada per a anàlisi fiable i visual.",
     stat4Title: "ENTREGA ÀGIL",
-    stat4Text: "Processament eficient i entrega adaptada a cada projecte."
+    stat4Text: "Processament eficient i entrega adaptada a cada projecte.",
   },
   es: {
     navContact: "Contacta",
@@ -128,7 +128,7 @@ const COPY: Record<Lang, Copy> = {
     stat3Title: "DATOS PRECISOS",
     stat3Text: "Tecnología avanzada para análisis fiable y visual.",
     stat4Title: "ENTREGA ÁGIL",
-    stat4Text: "Procesamiento eficiente y entrega adaptada a cada proyecto."
+    stat4Text: "Procesamiento eficiente y entrega adaptada a cada proyecto.",
   },
   en: {
     navContact: "Contact",
@@ -149,7 +149,8 @@ const COPY: Record<Lang, Copy> = {
       "Vegetation, coastline and technical surface analysis with advanced sensors and specialized capture.",
     service3Footer: "GOLF · VEGETATION · COASTLINE",
     featureEyebrow: "PROFESSIONAL APPROACH",
-    featureTitle: "Every project is unique. We bring the perspective you need.",
+    featureTitle:
+      "Every project is unique. We bring the perspective you need.",
     featureText:
       "Visual and technical aerial solutions to better understand each space and support better decisions.",
     featureEmailButton: "Send email",
@@ -171,7 +172,7 @@ const COPY: Record<Lang, Copy> = {
     stat3Title: "PRECISE DATA",
     stat3Text: "Advanced technology for reliable visual analysis.",
     stat4Title: "FAST DELIVERY",
-    stat4Text: "Efficient processing tailored to each project."
+    stat4Text: "Efficient processing tailored to each project.",
   },
   de: {
     navContact: "Kontakt",
@@ -215,8 +216,8 @@ const COPY: Record<Lang, Copy> = {
     stat3Title: "PRÄZISE DATEN",
     stat3Text: "Fortschrittliche Technologie für zuverlässige Analysen.",
     stat4Title: "SCHNELLE LIEFERUNG",
-    stat4Text: "Effiziente Bearbeitung je nach Projekt."
-  }
+    stat4Text: "Effiziente Bearbeitung je nach Projekt.",
+  },
 };
 
 function useIsMobile() {
@@ -243,7 +244,7 @@ function langButtonStyle(active: boolean): React.CSSProperties {
     fontSize: "14px",
     letterSpacing: "0.08em",
     transition: "border-color 180ms ease, opacity 180ms ease",
-    opacity: active ? 1 : 0.72
+    opacity: active ? 1 : 0.72,
   };
 }
 
@@ -254,7 +255,7 @@ function cardStyle(): React.CSSProperties {
     overflow: "hidden",
     transform: "translateY(0)",
     transition: "transform 220ms ease, box-shadow 220ms ease, filter 220ms ease",
-    boxShadow: "0 10px 30px rgba(0,0,0,0.18)"
+    boxShadow: "0 10px 30px rgba(0,0,0,0.18)",
   };
 }
 
@@ -286,22 +287,22 @@ export default function App() {
         text: c.service1Text,
         footer: c.service1Footer,
         image:
-          "https://plus.unsplash.com/premium_photo-1696273224432-51e74c998de2?q=80&w=872&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          "https://plus.unsplash.com/premium_photo-1696273224432-51e74c998de2?q=80&w=872&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       },
       {
         title: c.service2Title,
         text: c.service2Text,
         footer: c.service2Footer,
         image:
-          "https://aerocamaras.es/wp-content/uploads/2019/04/Presa-Aerocamaras.jpg"
+          "https://aerocamaras.es/wp-content/uploads/2019/04/Presa-Aerocamaras.jpg",
       },
       {
         title: c.service3Title,
         text: c.service3Text,
         footer: c.service3Footer,
         image:
-          "https://eos.com/wp-content/uploads/2024/03/multispectral-image-index-ndvi.png.webp"
-      }
+          "https://eos.com/wp-content/uploads/2024/03/multispectral-image-index-ndvi.png.webp",
+      },
     ],
     [c]
   );
@@ -317,8 +318,16 @@ export default function App() {
         .fade-up-delay { animation: fadeUp 950ms ease both; }
         .card-hover { transition: transform 220ms ease, box-shadow 220ms ease, filter 220ms ease; }
         .card-hover:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,0.28); filter: brightness(1.03); }
-        .button-polish { transition: transform 180ms ease, background 180ms ease, border-color 180ms ease, opacity 180ms ease; }
-        .button-polish:hover { transform: translateY(-2px); background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.85); }
+        .button-polish {
+          transition: transform 180ms ease, background 180ms ease, border-color 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
+          box-shadow: 0 0 0 rgba(213,186,114,0);
+        }
+        .button-polish:hover {
+          transform: translateY(-2px);
+          background: rgba(255,255,255,0.06);
+          border-color: rgba(255,255,255,0.9);
+          box-shadow: 0 0 18px rgba(213,186,114,0.18);
+        }
         .link-polish { transition: opacity 180ms ease; }
         .link-polish:hover { opacity: 0.82; }
         @keyframes fadeUp {
@@ -332,7 +341,7 @@ export default function App() {
         style={{
           fontFamily: "Inter, sans-serif",
           background: "#030607",
-          color: "#f5f5f5"
+          color: "#f5f5f5",
         }}
       >
         <section
@@ -340,7 +349,7 @@ export default function App() {
             minHeight: isMobile ? "auto" : "820px",
             position: "relative",
             background:
-              "linear-gradient(90deg, rgba(2,7,10,0.88) 0%, rgba(2,7,10,0.62) 36%, rgba(2,7,10,0.22) 62%), url('https://images.pexels.com/photos/36532574/pexels-photo-36532574.jpeg') center/cover no-repeat"
+              "linear-gradient(90deg, rgba(2,7,10,0.88) 0%, rgba(2,7,10,0.62) 36%, rgba(2,7,10,0.22) 62%), url('https://images.pexels.com/photos/36532574/pexels-photo-36532574.jpeg') center/cover no-repeat",
           }}
         >
           <div
@@ -352,7 +361,7 @@ export default function App() {
               justifyContent: "space-between",
               alignItems: "flex-start",
               gap: "20px",
-              flexDirection: isMobile ? "column" : "row"
+              flexDirection: isMobile ? "column" : "row",
             }}
           >
             <div>
@@ -361,7 +370,7 @@ export default function App() {
                   fontSize: isMobile ? "52px" : "88px",
                   lineHeight: 0.9,
                   fontWeight: 800,
-                  letterSpacing: "-0.06em"
+                  letterSpacing: "-0.06em",
                 }}
               >
                 Skyflick
@@ -372,7 +381,7 @@ export default function App() {
                   letterSpacing: isMobile ? "0.28em" : "0.42em",
                   marginTop: "10px",
                   marginLeft: isMobile ? "68px" : "150px",
-                  opacity: 0.94
+                  opacity: 0.94,
                 }}
               >
                 STUDIO
@@ -385,7 +394,7 @@ export default function App() {
                 alignItems: isMobile ? "flex-start" : "center",
                 gap: isMobile ? "18px" : "28px",
                 flexDirection: isMobile ? "column" : "row",
-                width: isMobile ? "100%" : "auto"
+                width: isMobile ? "100%" : "auto",
               }}
             >
               <div style={{ display: "flex", gap: isMobile ? "16px" : "22px", flexWrap: "wrap" }}>
@@ -415,7 +424,7 @@ export default function App() {
                   fontSize: isMobile ? "16px" : "18px",
                   width: isMobile ? "100%" : "auto",
                   textAlign: "center",
-                  boxSizing: "border-box"
+                  boxSizing: "border-box",
                 }}
               >
                 {c.navContact}
@@ -427,13 +436,13 @@ export default function App() {
             style={{
               maxWidth: "1520px",
               margin: "0 auto",
-              padding: isMobile ? "8px 20px 36px 20px" : "18px 54px 54px 54px"
+              padding: isMobile ? "8px 20px 36px 20px" : "18px 54px 54px 54px",
             }}
           >
             <div
               style={{
                 maxWidth: isMobile ? "100%" : "760px",
-                marginTop: isMobile ? "18px" : "34px"
+                marginTop: isMobile ? "18px" : "34px",
               }}
             >
               <h1
@@ -442,7 +451,7 @@ export default function App() {
                   lineHeight: 1.05,
                   fontWeight: 500,
                   letterSpacing: "-0.05em",
-                  margin: 0
+                  margin: 0,
                 }}
               >
                 {c.heroTitle}
@@ -453,7 +462,7 @@ export default function App() {
                   lineHeight: 1.55,
                   color: "rgba(255,255,255,0.86)",
                   maxWidth: isMobile ? "100%" : "760px",
-                  marginTop: "20px"
+                  marginTop: "20px",
                 }}
               >
                 {c.heroText}
@@ -466,14 +475,14 @@ export default function App() {
           style={{
             background: "#041015",
             padding: isMobile ? "22px 0 36px 0" : "26px 0 56px 0",
-            borderTop: "1px solid rgba(255,255,255,0.08)"
+            borderTop: "1px solid rgba(255,255,255,0.08)",
           }}
         >
           <div
             style={{
               maxWidth: "1520px",
               margin: "0 auto",
-              padding: isMobile ? "0 20px" : "0 54px"
+              padding: isMobile ? "0 20px" : "0 54px",
             }}
           >
             <div
@@ -481,14 +490,14 @@ export default function App() {
                 display: "flex",
                 alignItems: "center",
                 gap: "18px",
-                marginBottom: isMobile ? "22px" : "28px"
+                marginBottom: isMobile ? "22px" : "28px",
               }}
             >
               <div
                 style={{
                   color: "#d8d0b0",
                   fontSize: isMobile ? "13px" : "15px",
-                  letterSpacing: "0.2em"
+                  letterSpacing: "0.2em",
                 }}
               >
                 {c.servicesEyebrow}
@@ -497,7 +506,7 @@ export default function App() {
                 style={{
                   flex: 1,
                   height: "1px",
-                  background: "rgba(255,255,255,0.16)"
+                  background: "rgba(255,255,255,0.16)",
                 }}
               />
             </div>
@@ -506,7 +515,7 @@ export default function App() {
               style={{
                 display: "grid",
                 gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr",
-                gap: isMobile ? "18px" : "28px"
+                gap: isMobile ? "18px" : "28px",
               }}
             >
               {services.map((card) => (
@@ -514,7 +523,7 @@ export default function App() {
                   <div
                     style={{
                       height: isMobile ? "220px" : "278px",
-                      background: `linear-gradient(rgba(0,0,0,0.16), rgba(0,0,0,0.24)), url('${card.image}') center/cover no-repeat`
+                      background: `linear-gradient(rgba(0,0,0,0.16), rgba(0,0,0,0.24)), url('${card.image}') center/cover no-repeat`,
                     }}
                   />
                   <div style={{ padding: isMobile ? "20px" : "26px 22px 24px 22px" }}>
@@ -523,7 +532,7 @@ export default function App() {
                         fontSize: isMobile ? "22px" : "24px",
                         fontWeight: 500,
                         margin: "0 0 12px 0",
-                        letterSpacing: "-0.03em"
+                        letterSpacing: "-0.03em",
                       }}
                     >
                       {card.title}
@@ -533,7 +542,7 @@ export default function App() {
                         color: "rgba(255,255,255,0.84)",
                         fontSize: isMobile ? "16px" : "17px",
                         lineHeight: 1.62,
-                        margin: 0
+                        margin: 0,
                       }}
                     >
                       {card.text}
@@ -543,7 +552,7 @@ export default function App() {
                         marginTop: "18px",
                         color: "#d5ba72",
                         fontSize: isMobile ? "12px" : "14px",
-                        letterSpacing: "0.12em"
+                        letterSpacing: "0.12em",
                       }}
                     >
                       {card.footer}
@@ -559,14 +568,14 @@ export default function App() {
                 gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(4, 1fr)",
                 gap: isMobile ? "18px" : "36px",
                 marginTop: isMobile ? "26px" : "40px",
-                padding: isMobile ? "10px 0 0 0" : "26px 14px 0 14px"
+                padding: isMobile ? "10px 0 0 0" : "26px 14px 0 14px",
               }}
             >
               {[
                 [c.stat1Title, c.stat1Text],
                 [c.stat2Title, c.stat2Text],
                 [c.stat3Title, c.stat3Text],
-                [c.stat4Title, c.stat4Text]
+                [c.stat4Title, c.stat4Text],
               ].map(([title, text]) => (
                 <div key={title}>
                   <div
@@ -574,7 +583,7 @@ export default function App() {
                       color: "#f0d38c",
                       fontSize: isMobile ? "13px" : "15px",
                       letterSpacing: "0.08em",
-                      marginBottom: "10px"
+                      marginBottom: "10px",
                     }}
                   >
                     {title}
@@ -583,7 +592,7 @@ export default function App() {
                     style={{
                       color: "rgba(255,255,255,0.72)",
                       fontSize: isMobile ? "15px" : "16px",
-                      lineHeight: 1.55
+                      lineHeight: 1.55,
                     }}
                   >
                     {text}
@@ -600,7 +609,7 @@ export default function App() {
             minHeight: isMobile ? "auto" : "520px",
             background:
               "linear-gradient(90deg, rgba(3,12,16,0.84) 0%, rgba(3,12,16,0.5) 35%, rgba(3,12,16,0.12) 62%), url('https://images.pexels.com/photos/1173777/pexels-photo-1173777.jpeg?auto=compress&cs=tinysrgb&w=1800') center/cover no-repeat",
-            padding: isMobile ? "44px 0" : "70px 0"
+            padding: isMobile ? "44px 0" : "70px 0",
           }}
         >
           <div
@@ -611,7 +620,7 @@ export default function App() {
               display: "grid",
               gridTemplateColumns: isMobile ? "1fr" : "1.2fr 0.8fr",
               gap: isMobile ? "24px" : "40px",
-              alignItems: "end"
+              alignItems: "end",
             }}
           >
             <div>
@@ -620,7 +629,7 @@ export default function App() {
                   color: "#d5ba72",
                   fontSize: isMobile ? "13px" : "14px",
                   letterSpacing: "0.18em",
-                  marginBottom: "16px"
+                  marginBottom: "16px",
                 }}
               >
                 {c.featureEyebrow}
@@ -633,7 +642,7 @@ export default function App() {
                   fontWeight: 500,
                   letterSpacing: "-0.05em",
                   maxWidth: "720px",
-                  margin: 0
+                  margin: 0,
                 }}
               >
                 {c.featureTitle}
@@ -645,7 +654,7 @@ export default function App() {
                   fontSize: isMobile ? "17px" : "18px",
                   lineHeight: 1.7,
                   maxWidth: "740px",
-                  marginTop: "20px"
+                  marginTop: "20px",
                 }}
               >
                 {c.featureText}
@@ -656,7 +665,7 @@ export default function App() {
                   display: "flex",
                   gap: "14px",
                   flexWrap: "wrap",
-                  marginTop: "24px"
+                  marginTop: "24px",
                 }}
               >
                 <a
@@ -672,7 +681,7 @@ export default function App() {
                     fontSize: isMobile ? "17px" : "20px",
                     width: isMobile ? "100%" : "auto",
                     textAlign: "center",
-                    boxSizing: "border-box"
+                    boxSizing: "border-box",
                   }}
                 >
                   {c.featureEmailButton}
@@ -691,7 +700,7 @@ export default function App() {
                     fontSize: isMobile ? "17px" : "20px",
                     width: isMobile ? "100%" : "auto",
                     textAlign: "center",
-                    boxSizing: "border-box"
+                    boxSizing: "border-box",
                   }}
                 >
                   {c.featureWhatsappButton}
@@ -704,7 +713,7 @@ export default function App() {
                 background: "rgba(4,10,13,0.76)",
                 border: "1px solid rgba(255,255,255,0.08)",
                 borderRadius: "10px",
-                padding: isMobile ? "22px 20px" : "30px 28px"
+                padding: isMobile ? "22px 20px" : "30px 28px",
               }}
             >
               <div
@@ -712,7 +721,7 @@ export default function App() {
                   color: "rgba(255,255,255,0.62)",
                   fontSize: isMobile ? "13px" : "14px",
                   letterSpacing: "0.18em",
-                  marginBottom: "18px"
+                  marginBottom: "18px",
                 }}
               >
                 ÀREES / SECTORS
@@ -723,7 +732,7 @@ export default function App() {
                   color: "rgba(255,255,255,0.72)",
                   fontSize: isMobile ? "14px" : "16px",
                   lineHeight: 1.8,
-                  letterSpacing: "0.03em"
+                  letterSpacing: "0.03em",
                 }}
               >
                 {sectorsLine}
@@ -736,7 +745,7 @@ export default function App() {
           style={{
             background: "#02080b",
             padding: isMobile ? "32px 0" : "40px 0",
-            borderTop: "1px solid rgba(255,255,255,0.08)"
+            borderTop: "1px solid rgba(255,255,255,0.08)",
           }}
         >
           <div
@@ -749,7 +758,7 @@ export default function App() {
               alignItems: isMobile ? "flex-start" : "end",
               gap: "30px",
               flexWrap: "wrap",
-              flexDirection: isMobile ? "column" : "row"
+              flexDirection: isMobile ? "column" : "row",
             }}
           >
             <div>
@@ -759,7 +768,7 @@ export default function App() {
                   fontSize: isMobile ? "12px" : "13px",
                   letterSpacing: "0.25em",
                   marginBottom: "18px",
-                  fontWeight: 500
+                  fontWeight: 500,
                 }}
               >
                 {c.contactEyebrow}
@@ -771,7 +780,7 @@ export default function App() {
                     fontFamily: "'JetBrains Mono', monospace",
                     color: "#e5e7eb",
                     fontSize: isMobile ? "15px" : "17px",
-                    letterSpacing: "0.03em"
+                    letterSpacing: "0.03em",
                   }}
                 >
                   {c.zone}
@@ -782,7 +791,7 @@ export default function App() {
                     fontFamily: "'JetBrains Mono', monospace",
                     color: "#e5e7eb",
                     fontSize: isMobile ? "15px" : "17px",
-                    letterSpacing: "0.03em"
+                    letterSpacing: "0.03em",
                   }}
                 >
                   {c.phone}
@@ -796,7 +805,7 @@ export default function App() {
                     color: "#e5e7eb",
                     fontSize: isMobile ? "15px" : "17px",
                     textDecoration: "none",
-                    letterSpacing: "0.03em"
+                    letterSpacing: "0.03em",
                   }}
                 >
                   {c.email}
@@ -810,7 +819,7 @@ export default function App() {
                     color: "#e5e7eb",
                     fontSize: isMobile ? "15px" : "17px",
                     textDecoration: "none",
-                    letterSpacing: "0.03em"
+                    letterSpacing: "0.03em",
                   }}
                 >
                   {c.instagram}
@@ -825,7 +834,7 @@ export default function App() {
                   lineHeight: 0.9,
                   fontWeight: 800,
                   letterSpacing: "-0.06em",
-                  color: "rgba(255,255,255,0.12)"
+                  color: "rgba(255,255,255,0.12)",
                 }}
               >
                 Skyflick
@@ -836,7 +845,7 @@ export default function App() {
                   fontSize: isMobile ? "13px" : "18px",
                   letterSpacing: isMobile ? "0.28em" : "0.42em",
                   color: "rgba(255,255,255,0.2)",
-                  marginTop: "10px"
+                  marginTop: "10px",
                 }}
               >
                 STUDIO
@@ -846,7 +855,7 @@ export default function App() {
                 style={{
                   marginTop: "18px",
                   color: "rgba(255,255,255,0.4)",
-                  fontSize: isMobile ? "14px" : "16px"
+                  fontSize: isMobile ? "14px" : "16px",
                 }}
               >
                 © 2024 Skyflick Studio
