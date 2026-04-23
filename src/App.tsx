@@ -118,7 +118,7 @@ const COPY: Record<Lang, Copy> = {
     service1Title: "Serveis audiovisuals amb dron",
     service1Text:
       "Vídeo i fotografia aèria en 4K per a cinema, publicitat i projectes que necessiten una imatge cuidada des de l'aire.",
-    service1Footer: "VIL·LES · HOTELS · PUBLICITAT",
+    service1Footer: "FILM · ADVERTISING · VILLAS · HOTELS",
     service2Title: "Inspecció tècnica",
     service2Text:
       "Revisió visual d'edificis, cobertes, estructures i zones industrials per detectar incidències amb rapidesa i seguretat.",
@@ -173,7 +173,7 @@ const COPY: Record<Lang, Copy> = {
     service1Title: "Servicios audiovisuales con dron",
     service1Text:
       "Vídeo y fotografía aérea en 4K para cine, publicidad y proyectos que necesitan una imagen cuidada desde el aire.",
-    service1Footer: "VILLAS · HOTELES · PUBLICIDAD",
+    service1Footer: "CINE · PUBLICIDAD · VILLAS · HOTELES",
     service2Title: "Inspección técnica",
     service2Text:
       "Revisión visual de edificios, cubiertas, estructuras y zonas industriales para detectar incidencias con rapidez y seguridad.",
@@ -228,7 +228,7 @@ const COPY: Record<Lang, Copy> = {
     service1Title: "Audiovisuelle Drohnendienste",
     service1Text:
       "4K-Luftvideo und -fotografie für Film, Werbung und Projekte mit hochwertigem visuellen Anspruch.",
-    service1Footer: "VILLEN · HOTELS · WERBUNG",
+    service1Footer: "FILM · WERBUNG · VILLEN · HOTELS",
     service2Title: "Technische Inspektion",
     service2Text:
       "Visuelle Prüfung von Gebäuden, Dächern, Strukturen und Industrieflächen mit Schnelligkeit und Sicherheit.",
