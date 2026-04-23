@@ -1,138 +1,1187 @@
-import { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
-type Lang = "ca" | "es";
+type Lang = "en" | "ca" | "es" | "de";
 
-const COPY = {
+type Copy = {
+  navContact: string;
+  heroTitle: string;
+  heroText: string;
+  servicesEyebrow: string;
+  service1Title: string;
+  service1Text: string;
+  service1Footer: string;
+  service2Title: string;
+  service2Text: string;
+  service2Footer: string;
+  service3Title: string;
+  service3Text: string;
+  service3Footer: string;
+  statsEyebrow: string;
+  stat1Title: string;
+  stat1Text: string;
+  stat2Title: string;
+  stat2Text: string;
+  stat3Title: string;
+  stat3Text: string;
+  stat4Title: string;
+  stat4Text: string;
+  contactEyebrow: string;
+  contactTitle: string;
+  contactText: string;
+  formTitle: string;
+  namePlaceholder: string;
+  emailPlaceholder: string;
+  messagePlaceholder: string;
+  submitButton: string;
+  submittingButton: string;
+  whatsappButton: string;
+  sectorsEyebrow: string;
+  sector1: string;
+  sector2: string;
+  sector3: string;
+  sector4: string;
+  sector5: string;
+  footerEyebrow: string;
+  zone: string;
+  phone: string;
+  email: string;
+  instagram: string;
+  floatingWhatsapp: string;
+  successTitle: string;
+  successText: string;
+  errorTitle: string;
+  errorText: string;
+};
+
+const COPY: Record<Lang, Copy> = {
+  en: {
+    navContact: "Contact",
+    heroTitle: "Aerial imaging and visual analysis with drones",
+    heroText:
+      "Audiovisual services, technical inspection and multispectral mapping for film, buildings, industry, vegetation and coastline.",
+    servicesEyebrow: "SERVICES",
+    service1Title: "Aerial audiovisual services",
+    service1Text:
+      "4K aerial video and photography for film, advertising and projects that need a carefully crafted image from above.",
+    service1Footer: "VILLAS · HOTELS · ADVERTISING",
+    service2Title: "Technical inspection",
+    service2Text:
+      "Visual review of buildings, roofs, structures and industrial areas to detect issues quickly and safely.",
+    service2Footer: "INDUSTRY · INFRASTRUCTURE",
+    service3Title: "Multispectral mapping",
+    service3Text:
+      "Vegetation, coastline and technical surface analysis with advanced sensors and specialized capture.",
+    service3Footer: "VEGETATION · COASTLINE · ANALYSIS",
+    statsEyebrow: "KEY POINTS",
+    stat1Title: "SAFE FLIGHTS",
+    stat1Text: "Certified operations and compliance.",
+    stat2Title: "4K QUALITY",
+    stat2Text: "High-resolution capture for professional results.",
+    stat3Title: "PRECISE DATA",
+    stat3Text: "Advanced technology for reliable visual analysis.",
+    stat4Title: "FAST DELIVERY",
+    stat4Text: "Efficient processing tailored to each project.",
+    contactEyebrow: "CONTACT",
+    contactTitle: "Let’s talk about your project",
+    contactText:
+      "If you need aerial imaging, technical inspection or multispectral analysis, write to us and we will help define the best solution.",
+    formTitle: "Write to us directly",
+    namePlaceholder: "Name",
+    emailPlaceholder: "Email",
+    messagePlaceholder: "Tell us about your project",
+    submitButton: "Send message",
+    submittingButton: "Sending...",
+    whatsappButton: "WhatsApp",
+    sectorsEyebrow: "AREAS / SECTORS",
+    sector1: "Film and advertising",
+    sector2: "Architecture and real estate",
+    sector3: "Industry and infrastructure",
+    sector4: "Environment and territory",
+    sector5: "Sport and vegetation",
+    footerEyebrow: "CONTACT",
+    zone: "Area: Felanitx · Mallorca · Balearic Islands",
+    phone: "Phone: +34 634 562 634",
+    email: "Email: skyflickesp@gmail.com",
+    instagram: "Instagram: @_Skyflick_",
+    floatingWhatsapp: "WhatsApp",
+    successTitle: "Message sent",
+    successText: "Thank you. We’ll get back to you as soon as possible.",
+    errorTitle: "Something went wrong",
+    errorText: "Please try again or contact us via WhatsApp.",
+  },
   ca: {
-    navContact: "Contacta",
+    navContact: "Contacte",
     heroTitle: "Imatge aèria i anàlisi visual amb drons",
     heroText:
       "Serveis audiovisuals, inspecció tècnica i cartografia multiespectral per a cinema, edificis, indústria, vegetació i costa.",
-    services: "ELS NOSTRES SERVEIS",
-    contact: "CONTACTE",
-    emailBtn: "Enviar correu",
-    whatsapp: "WhatsApp",
+    servicesEyebrow: "ELS NOSTRES SERVEIS",
+    service1Title: "Serveis audiovisuals amb dron",
+    service1Text:
+      "Vídeo i fotografia aèria en 4K per a cinema, publicitat i projectes que necessiten una imatge cuidada des de l'aire.",
+    service1Footer: "VIL·LES · HOTELS · PUBLICITAT",
+    service2Title: "Inspecció tècnica",
+    service2Text:
+      "Revisió visual d'edificis, cobertes, estructures i zones industrials per detectar incidències amb rapidesa i seguretat.",
+    service2Footer: "INDÚSTRIA · INFRAESTRUCTURES",
+    service3Title: "Mapes multiespectrals",
+    service3Text:
+      "Anàlisi de vegetació, costa i superfícies tècniques amb sensors avançats i captura especialitzada.",
+    service3Footer: "VEGETACIÓ · COSTA · ANÀLISI",
+    statsEyebrow: "PUNTS CLAU",
+    stat1Title: "VOLS SEGURS",
+    stat1Text: "Operacions certificades i compliment normatiu.",
+    stat2Title: "QUALITAT 4K",
+    stat2Text: "Captura d'alta resolució per a resultats professionals.",
+    stat3Title: "DADES PRECISSES",
+    stat3Text: "Tecnologia avançada per a anàlisi fiable i visual.",
+    stat4Title: "ENTREGA ÀGIL",
+    stat4Text: "Processament eficient i entrega adaptada a cada projecte.",
+    contactEyebrow: "CONTACTE",
+    contactTitle: "Parlem del teu projecte",
+    contactText:
+      "Si necessites imatge aèria, inspecció tècnica o anàlisi multiespectral, escriu-nos i t'ajudarem a definir la millor solució.",
+    formTitle: "Escriu-nos directament",
+    namePlaceholder: "Nom",
+    emailPlaceholder: "Correu electrònic",
+    messagePlaceholder: "Explica'ns el teu projecte",
+    submitButton: "Enviar missatge",
+    submittingButton: "Enviant...",
+    whatsappButton: "WhatsApp",
+    sectorsEyebrow: "ÀREES / SECTORS",
+    sector1: "Cinema i publicitat",
+    sector2: "Arquitectura i immobiliària",
+    sector3: "Indústria i infraestructures",
+    sector4: "Medi ambient i territori",
+    sector5: "Esport i vegetació",
+    footerEyebrow: "CONTACTE",
+    zone: "Zona: Felanitx · Mallorca · Illes Balears",
+    phone: "Telèfon: +34 634 562 634",
+    email: "Correu: skyflickesp@gmail.com",
+    instagram: "Instagram: @_Skyflick_",
+    floatingWhatsapp: "WhatsApp",
+    successTitle: "Missatge enviat",
+    successText: "Gràcies. Et respondrem al més aviat possible.",
+    errorTitle: "Hi ha hagut un problema",
+    errorText: "Torna-ho a provar o escriu-nos per WhatsApp.",
   },
   es: {
     navContact: "Contacto",
     heroTitle: "Imagen aérea y análisis visual con drones",
     heroText:
       "Servicios audiovisuales, inspección técnica y cartografía multiespectral para cine, edificios, industria, vegetación y costa.",
-    services: "SERVICIOS",
-    contact: "CONTACTO",
-    emailBtn: "Enviar correo",
-    whatsapp: "WhatsApp",
+    servicesEyebrow: "SERVICIOS",
+    service1Title: "Servicios audiovisuales con dron",
+    service1Text:
+      "Vídeo y fotografía aérea en 4K para cine, publicidad y proyectos que necesitan una imagen cuidada desde el aire.",
+    service1Footer: "VILLAS · HOTELES · PUBLICIDAD",
+    service2Title: "Inspección técnica",
+    service2Text:
+      "Revisión visual de edificios, cubiertas, estructuras y zonas industriales para detectar incidencias con rapidez y seguridad.",
+    service2Footer: "INDUSTRIA · INFRAESTRUCTURAS",
+    service3Title: "Mapas multiespectrales",
+    service3Text:
+      "Análisis de vegetación, costa y superficies técnicas con sensores avanzados y captura especializada.",
+    service3Footer: "VEGETACIÓN · COSTA · ANÁLISIS",
+    statsEyebrow: "PUNTOS CLAVE",
+    stat1Title: "VUELOS SEGUROS",
+    stat1Text: "Operaciones certificadas y cumplimiento normativo.",
+    stat2Title: "CALIDAD 4K",
+    stat2Text: "Captura de alta resolución para resultados profesionales.",
+    stat3Title: "DATOS PRECISOS",
+    stat3Text: "Tecnología avanzada para análisis fiable y visual.",
+    stat4Title: "ENTREGA ÁGIL",
+    stat4Text: "Procesamiento eficiente y entrega adaptada a cada proyecto.",
+    contactEyebrow: "CONTACTO",
+    contactTitle: "Hablemos de tu proyecto",
+    contactText:
+      "Si necesitas imagen aérea, inspección técnica o análisis multiespectral, escríbenos y te ayudaremos a definir la mejor solución.",
+    formTitle: "Escríbenos directamente",
+    namePlaceholder: "Nombre",
+    emailPlaceholder: "Correo electrónico",
+    messagePlaceholder: "Cuéntanos tu proyecto",
+    submitButton: "Enviar mensaje",
+    submittingButton: "Enviando...",
+    whatsappButton: "WhatsApp",
+    sectorsEyebrow: "ÁREAS / SECTORES",
+    sector1: "Cine y publicidad",
+    sector2: "Arquitectura e inmobiliaria",
+    sector3: "Industria e infraestructuras",
+    sector4: "Medio ambiente y territorio",
+    sector5: "Deporte y vegetación",
+    footerEyebrow: "CONTACTO",
+    zone: "Zona: Felanitx · Mallorca · Islas Baleares",
+    phone: "Teléfono: +34 634 562 634",
+    email: "Correo: skyflickesp@gmail.com",
+    instagram: "Instagram: @_Skyflick_",
+    floatingWhatsapp: "WhatsApp",
+    successTitle: "Mensaje enviado",
+    successText: "Gracias. Te responderemos lo antes posible.",
+    errorTitle: "Ha habido un problema",
+    errorText: "Vuelve a intentarlo o escríbenos por WhatsApp.",
+  },
+  de: {
+    navContact: "Kontakt",
+    heroTitle: "Luftbild und visuelle Analyse mit Drohnen",
+    heroText:
+      "Audiovisuelle Dienstleistungen, technische Inspektion und multispektrale Kartierung für Film, Gebäude, Industrie, Vegetation und Küste.",
+    servicesEyebrow: "LEISTUNGEN",
+    service1Title: "Audiovisuelle Drohnendienste",
+    service1Text:
+      "4K-Luftvideo und -fotografie für Film, Werbung und Projekte mit hochwertigem visuellen Anspruch.",
+    service1Footer: "VILLEN · HOTELS · WERBUNG",
+    service2Title: "Technische Inspektion",
+    service2Text:
+      "Visuelle Prüfung von Gebäuden, Dächern, Strukturen und Industrieflächen mit Schnelligkeit und Sicherheit.",
+    service2Footer: "INDUSTRIE · INFRASTRUKTUR",
+    service3Title: "Multispektrale Karten",
+    service3Text:
+      "Analyse von Vegetation, Küste und technischen Flächen mit fortschrittlichen Sensoren.",
+    service3Footer: "VEGETATION · KÜSTE · ANALYSE",
+    statsEyebrow: "KERNPUNKTE",
+    stat1Title: "SICHERE FLÜGE",
+    stat1Text: "Zertifizierte Einsätze und Normkonformität.",
+    stat2Title: "4K-QUALITÄT",
+    stat2Text: "Hochauflösende Erfassung für professionelle Ergebnisse.",
+    stat3Title: "PRÄZISE DATEN",
+    stat3Text: "Fortschrittliche Technologie für zuverlässige Analysen.",
+    stat4Title: "SCHNELLE LIEFERUNG",
+    stat4Text: "Effiziente Bearbeitung je nach Projekt.",
+    contactEyebrow: "KONTAKT",
+    contactTitle: "Erzähl uns von deinem Projekt",
+    contactText:
+      "Wenn du Luftbild, technische Inspektion oder multispektrale Analyse brauchst, schreib uns und wir definieren die beste Lösung.",
+    formTitle: "Schreib uns direkt",
+    namePlaceholder: "Name",
+    emailPlaceholder: "E-Mail",
+    messagePlaceholder: "Erzähl uns von deinem Projekt",
+    submitButton: "Nachricht senden",
+    submittingButton: "Wird gesendet...",
+    whatsappButton: "WhatsApp",
+    sectorsEyebrow: "BEREICHE / SEKTOREN",
+    sector1: "Film und Werbung",
+    sector2: "Architektur und Immobilien",
+    sector3: "Industrie und Infrastruktur",
+    sector4: "Umwelt und Territorium",
+    sector5: "Sport und Vegetation",
+    footerEyebrow: "KONTAKT",
+    zone: "Gebiet: Felanitx · Mallorca · Balearen",
+    phone: "Telefon: +34 634 562 634",
+    email: "E-Mail: skyflickesp@gmail.com",
+    instagram: "Instagram: @_Skyflick_",
+    floatingWhatsapp: "WhatsApp",
+    successTitle: "Nachricht gesendet",
+    successText: "Danke. Wir melden uns so schnell wie möglich.",
+    errorTitle: "Etwas ist schiefgelaufen",
+    errorText: "Bitte versuche es erneut oder kontaktiere uns per WhatsApp.",
   },
 };
 
-export default function App() {
-  const [lang, setLang] = useState<Lang>("es");
-  const c = COPY[lang];
+type FormStatus = "idle" | "submitting" | "success" | "error";
+
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    document.title = "Skyflick Studio";
+    const update = () => setIsMobile(window.innerWidth < 900);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
   }, []);
+
+  return isMobile;
+}
+
+function langButtonStyle(active: boolean): React.CSSProperties {
+  return {
+    background: "transparent",
+    color: "#f5f5f5",
+    border: "none",
+    borderBottom: active ? "2px solid #f5f5f5" : "2px solid transparent",
+    padding: "4px 2px 8px 2px",
+    cursor: "pointer",
+    fontSize: "14px",
+    letterSpacing: "0.08em",
+    transition: "border-color 180ms ease, opacity 180ms ease",
+    opacity: active ? 1 : 0.72,
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
+  };
+}
+
+function cardStyle(): React.CSSProperties {
+  return {
+    background: "#07131a",
+    borderRadius: "10px",
+    overflow: "hidden",
+    transform: "translateY(0)",
+    transition: "transform 220ms ease, box-shadow 220ms ease, filter 220ms ease",
+    boxShadow: "0 10px 30px rgba(0,0,0,0.18)",
+  };
+}
+
+function FlagCatalonia() {
+  return (
+    <span
+      style={{
+        width: 18,
+        height: 12,
+        borderRadius: 2,
+        display: "inline-block",
+        background:
+          "linear-gradient(to bottom, #f5c400 0%, #f5c400 16.66%, #c61d23 16.66%, #c61d23 33.33%, #f5c400 33.33%, #f5c400 50%, #c61d23 50%, #c61d23 66.66%, #f5c400 66.66%, #f5c400 83.33%, #c61d23 83.33%, #c61d23 100%)",
+        boxShadow: "0 0 0 1px rgba(255,255,255,0.12) inset",
+      }}
+    />
+  );
+}
+
+function LangFlag({ code }: { code: Lang }) {
+  if (code === "en") return <span style={{ fontSize: 14 }}>🇬🇧</span>;
+  if (code === "ca") return <FlagCatalonia />;
+  if (code === "es") return <span style={{ fontSize: 14 }}>🇪🇸</span>;
+  return <span style={{ fontSize: 14 }}>🇩🇪</span>;
+}
+
+export default function App() {
+  const [lang, setLang] = useState<Lang>("en");
+  const [formStatus, setFormStatus] = useState<FormStatus>("idle");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const c = COPY[lang];
+  const isMobile = useIsMobile();
+
+  useEffect(() => {
+    const inter = document.createElement("link");
+    inter.href =
+      "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap";
+    inter.rel = "stylesheet";
+    document.head.appendChild(inter);
+
+    const mono = document.createElement("link");
+    mono.href =
+      "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap";
+    mono.rel = "stylesheet";
+    document.head.appendChild(mono);
+
+    document.documentElement.lang = lang;
+
+    return () => {
+      if (document.head.contains(inter)) document.head.removeChild(inter);
+      if (document.head.contains(mono)) document.head.removeChild(mono);
+    };
+  }, [lang]);
 
   const services = useMemo(
     () => [
       {
-        title: "Audiovisual",
-        img: "https://plus.unsplash.com/premium_photo-1696273224432-51e74c998de2",
+        title: c.service1Title,
+        text: c.service1Text,
+        footer: c.service1Footer,
+        image:
+          "https://plus.unsplash.com/premium_photo-1696273224432-51e74c998de2?q=80&w=1200&auto=format&fit=crop",
       },
       {
-        title: "Inspección técnica",
-        img: "https://aerocamaras.es/wp-content/uploads/2019/04/Presa-Aerocamaras.jpg",
+        title: c.service2Title,
+        text: c.service2Text,
+        footer: c.service2Footer,
+        image:
+          "https://aerocamaras.es/wp-content/uploads/2019/04/Presa-Aerocamaras.jpg",
       },
       {
-        title: "Multiespectral",
-        img: "https://eos.com/wp-content/uploads/2024/03/multispectral-image-index-ndvi.png.webp",
+        title: c.service3Title,
+        text: c.service3Text,
+        footer: c.service3Footer,
+        image:
+          "https://eos.com/wp-content/uploads/2024/03/multispectral-image-index-ndvi.png.webp",
       },
     ],
-    []
+    [c]
   );
 
+  const stats = useMemo(
+    () => [
+      { title: c.stat1Title, text: c.stat1Text },
+      { title: c.stat2Title, text: c.stat2Text },
+      { title: c.stat3Title, text: c.stat3Text },
+      { title: c.stat4Title, text: c.stat4Text },
+    ],
+    [c]
+  );
+
+  const sectorsLine = `${c.sector1} · ${c.sector2} · ${c.sector3} · ${c.sector4} · ${c.sector5}`;
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setFormStatus("submitting");
+
+    try {
+      const response = await fetch("https://formspree.io/f/xjgjjgqr", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+          _subject: "New Skyflick contact",
+          language: lang,
+        }),
+      });
+
+      if (response.ok) {
+        setFormStatus("success");
+        setName("");
+        setEmail("");
+        setMessage("");
+        return;
+      }
+
+      setFormStatus("error");
+    } catch {
+      setFormStatus("error");
+    }
+  }
+
   return (
-    <div style={{ fontFamily: "Inter, sans-serif", background: "#030607", color: "#fff" }}>
+    <>
+      <style>{`
+        html { scroll-behavior: smooth; }
+        * { box-sizing: border-box; }
+        body {
+          margin: 0;
+          background: #030607;
+          color: #f5f5f5;
+          font-family: Inter, system-ui, sans-serif;
+        }
+        input, textarea, button {
+          font: inherit;
+        }
+        input::placeholder, textarea::placeholder {
+          color: rgba(255,255,255,0.45);
+        }
+        input:focus, textarea:focus {
+          outline: none;
+          border-color: rgba(213,186,114,0.8) !important;
+          box-shadow: 0 0 0 3px rgba(213,186,114,0.12);
+        }
+        .fade-up { animation: fadeUp 700ms ease both; }
+        .fade-up-delay { animation: fadeUp 950ms ease both; }
+        .card-hover {
+          transition: transform 220ms ease, box-shadow 220ms ease, filter 220ms ease;
+        }
+        .card-hover:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 18px 40px rgba(0,0,0,0.28);
+          filter: brightness(1.03);
+        }
+        .button-polish {
+          transition: transform 180ms ease, background 180ms ease, border-color 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
+          box-shadow: 0 0 0 rgba(213,186,114,0);
+        }
+        .button-polish:hover {
+          transform: translateY(-2px);
+          background: rgba(255,255,255,0.06);
+          border-color: rgba(255,255,255,0.85);
+          box-shadow: 0 0 18px rgba(213,186,114,0.18);
+        }
+        .link-polish {
+          transition: opacity 180ms ease;
+        }
+        .link-polish:hover {
+          opacity: 0.82;
+        }
+        .floating-whatsapp {
+          position: fixed;
+          right: 18px;
+          bottom: 18px;
+          z-index: 50;
+          text-decoration: none;
+          color: white;
+          background: #0b1418;
+          border: 1px solid rgba(255,255,255,0.12);
+          border-radius: 999px;
+          padding: 12px 16px;
+          box-shadow: 0 12px 24px rgba(0,0,0,0.28);
+          transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+        }
+        .floating-whatsapp:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 18px 32px rgba(0,0,0,0.35);
+          background: #0f1b20;
+        }
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(18px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
 
-      {/* HERO */}
-      <section
+      <a
+        className="floating-whatsapp"
+        href="https://wa.me/34634562634?text=Hello%20Skyflick,%20I%20am%20interested%20in%20your%20services"
+        target="_blank"
+        rel="noreferrer"
+      >
+        {c.floatingWhatsapp}
+      </a>
+
+      <div
+        className="fade-up"
         style={{
-          minHeight: "80vh",
-          background:
-            "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') center/cover",
-          padding: "40px",
+          fontFamily: "Inter, sans-serif",
+          background: "#030607",
+          color: "#f5f5f5",
         }}
       >
-        <h1 style={{ fontSize: "60px" }}>Skyflick Studio</h1>
-        <h2 style={{ maxWidth: "700px" }}>{c.heroTitle}</h2>
-        <p style={{ maxWidth: "600px", opacity: 0.8 }}>{c.heroText}</p>
-      </section>
-
-      {/* SERVICIOS */}
-      <section style={{ padding: "60px 20px" }}>
-        <h3>{c.services}</h3>
-
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "20px" }}>
-          {services.map((s) => (
-            <div key={s.title}>
-              <div
-                style={{
-                  height: "200px",
-                  background: `url(${s.img}) center/cover`,
-                }}
-              />
-              <p>{s.title}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* CONTACTO */}
-      <section
-        id="contacte"
-        style={{
-          padding: "60px 20px",
-          background:
-            "linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e') center/cover",
-        }}
-      >
-        <h3>{c.contact}</h3>
-
-        {/* BOTONES */}
-        <div style={{ marginBottom: "20px" }}>
-          <a href="mailto:skyflickesp@gmail.com">
-            <button>{c.emailBtn}</button>
-          </a>
-
-          <a href="https://wa.me/34634562634">
-            <button>{c.whatsapp}</button>
-          </a>
-        </div>
-
-        {/* FORMULARIO (AHORA SIEMPRE VISIBLE) */}
-        <form
-          action="https://formsubmit.co/skyflickesp@gmail.com"
-          method="POST"
+        <section
           style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "10px",
-            maxWidth: "500px",
+            minHeight: isMobile ? "auto" : "820px",
+            position: "relative",
+            background:
+              "linear-gradient(90deg, rgba(2,7,10,0.88) 0%, rgba(2,7,10,0.62) 36%, rgba(2,7,10,0.22) 62%), url('https://images.pexels.com/photos/36532574/pexels-photo-36532574.jpeg') center/cover no-repeat",
           }}
         >
-          <input type="text" name="name" placeholder="Nombre" required />
-          <input type="email" name="email" placeholder="Correo" required />
-          <textarea name="message" placeholder="Mensaje" required />
-          <button type="submit">Enviar</button>
+          <div
+            style={{
+              maxWidth: "1520px",
+              margin: "0 auto",
+              padding: isMobile ? "24px 20px" : "34px 54px",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "flex-start",
+              gap: "20px",
+              flexDirection: isMobile ? "column" : "row",
+            }}
+          >
+            <div>
+              <div
+                style={{
+                  fontSize: isMobile ? "52px" : "88px",
+                  lineHeight: 0.9,
+                  fontWeight: 800,
+                  letterSpacing: "-0.06em",
+                }}
+              >
+                Skyflick
+              </div>
+              <div
+                style={{
+                  fontSize: isMobile ? "14px" : "22px",
+                  letterSpacing: isMobile ? "0.28em" : "0.42em",
+                  marginTop: "10px",
+                  marginLeft: isMobile ? "68px" : "150px",
+                  opacity: 0.94,
+                }}
+              >
+                STUDIO
+              </div>
+            </div>
 
-          <input type="hidden" name="_captcha" value="false" />
-        </form>
-      </section>
+            <div
+              style={{
+                display: "flex",
+                alignItems: isMobile ? "flex-start" : "center",
+                gap: isMobile ? "18px" : "28px",
+                flexDirection: isMobile ? "column" : "row",
+                width: isMobile ? "100%" : "auto",
+              }}
+            >
+              <div style={{ display: "flex", gap: isMobile ? "16px" : "22px", flexWrap: "wrap" }}>
+                {(["en", "ca", "es", "de"] as Lang[]).map((code) => (
+                  <button
+                    key={code}
+                    onClick={() => setLang(code)}
+                    style={langButtonStyle(lang === code)}
+                  >
+                    <LangFlag code={code} />
+                    {code.toUpperCase()}
+                  </button>
+                ))}
+              </div>
 
-      {/* FOOTER */}
-      <footer style={{ padding: "20px", textAlign: "center", opacity: 0.6 }}>
-        © Skyflick Studio
-      </footer>
-    </div>
+              <a
+                className="button-polish"
+                href="#contacte"
+                style={{
+                  color: "#fff",
+                  textDecoration: "none",
+                  border: "1px solid rgba(255,255,255,0.55)",
+                  padding: isMobile ? "14px 20px" : "16px 28px",
+                  borderRadius: "12px",
+                  fontSize: isMobile ? "16px" : "18px",
+                  width: isMobile ? "100%" : "auto",
+                  textAlign: "center",
+                  boxSizing: "border-box",
+                }}
+              >
+                {c.navContact}
+              </a>
+            </div>
+          </div>
+
+          <div
+            style={{
+              maxWidth: "1520px",
+              margin: "0 auto",
+              padding: isMobile ? "8px 20px 36px 20px" : "18px 54px 54px 54px",
+            }}
+          >
+            <div
+              style={{
+                maxWidth: isMobile ? "100%" : "760px",
+                marginTop: isMobile ? "18px" : "34px",
+              }}
+            >
+              <h1
+                style={{
+                  fontSize: isMobile ? "40px" : "68px",
+                  lineHeight: 1.05,
+                  fontWeight: 500,
+                  letterSpacing: "-0.05em",
+                  margin: 0,
+                }}
+              >
+                {c.heroTitle}
+              </h1>
+              <p
+                style={{
+                  fontSize: isMobile ? "18px" : "22px",
+                  lineHeight: 1.55,
+                  color: "rgba(255,255,255,0.86)",
+                  maxWidth: isMobile ? "100%" : "760px",
+                  marginTop: "20px",
+                }}
+              >
+                {c.heroText}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          style={{
+            background: "#041015",
+            padding: isMobile ? "22px 0 36px 0" : "26px 0 56px 0",
+            borderTop: "1px solid rgba(255,255,255,0.08)",
+          }}
+        >
+          <div
+            style={{
+              maxWidth: "1520px",
+              margin: "0 auto",
+              padding: isMobile ? "0 20px" : "0 54px",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "18px",
+                marginBottom: isMobile ? "22px" : "28px",
+              }}
+            >
+              <div
+                style={{
+                  color: "#d8d0b0",
+                  fontSize: isMobile ? "13px" : "15px",
+                  letterSpacing: "0.2em",
+                }}
+              >
+                {c.servicesEyebrow}
+              </div>
+              <div
+                style={{
+                  flex: 1,
+                  height: "1px",
+                  background: "rgba(255,255,255,0.16)",
+                }}
+              />
+            </div>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr",
+                gap: isMobile ? "18px" : "28px",
+              }}
+            >
+              {services.map((card) => (
+                <div key={card.title} className="card-hover fade-up-delay" style={cardStyle()}>
+                  <div
+                    style={{
+                      height: isMobile ? "220px" : "278px",
+                      background: `linear-gradient(rgba(0,0,0,0.16), rgba(0,0,0,0.24)), url('${card.image}') center/cover no-repeat`,
+                    }}
+                  />
+                  <div style={{ padding: isMobile ? "20px" : "26px 22px 24px 22px" }}>
+                    <h3
+                      style={{
+                        fontSize: isMobile ? "22px" : "24px",
+                        fontWeight: 500,
+                        margin: "0 0 12px 0",
+                        letterSpacing: "-0.03em",
+                      }}
+                    >
+                      {card.title}
+                    </h3>
+                    <p
+                      style={{
+                        color: "rgba(255,255,255,0.84)",
+                        fontSize: isMobile ? "16px" : "17px",
+                        lineHeight: 1.62,
+                        margin: 0,
+                      }}
+                    >
+                      {card.text}
+                    </p>
+                    <div
+                      style={{
+                        marginTop: "18px",
+                        color: "#d5ba72",
+                        fontSize: isMobile ? "12px" : "14px",
+                        letterSpacing: "0.12em",
+                      }}
+                    >
+                      {card.footer}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div style={{ marginTop: isMobile ? "30px" : "42px" }}>
+              <div
+                style={{
+                  color: "#d8d0b0",
+                  fontSize: isMobile ? "13px" : "15px",
+                  letterSpacing: "0.2em",
+                  marginBottom: "18px",
+                }}
+              >
+                {c.statsEyebrow}
+              </div>
+
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(4, 1fr)",
+                  gap: isMobile ? "18px" : "36px",
+                }}
+              >
+                {stats.map((item) => (
+                  <div key={item.title}>
+                    <div
+                      style={{
+                        color: "#f0d38c",
+                        fontSize: isMobile ? "13px" : "15px",
+                        letterSpacing: "0.08em",
+                        marginBottom: "10px",
+                      }}
+                    >
+                      {item.title}
+                    </div>
+                    <div
+                      style={{
+                        color: "rgba(255,255,255,0.72)",
+                        fontSize: isMobile ? "15px" : "16px",
+                        lineHeight: 1.55,
+                      }}
+                    >
+                      {item.text}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="contacte"
+          style={{
+            minHeight: isMobile ? "auto" : "560px",
+            background:
+              "linear-gradient(90deg, rgba(3,12,16,0.84) 0%, rgba(3,12,16,0.5) 35%, rgba(3,12,16,0.12) 62%), url('https://images.pexels.com/photos/1173777/pexels-photo-1173777.jpeg?auto=compress&cs=tinysrgb&w=1800') center/cover no-repeat",
+            padding: isMobile ? "44px 0" : "70px 0",
+          }}
+        >
+          <div
+            style={{
+              maxWidth: "1520px",
+              margin: "0 auto",
+              padding: isMobile ? "0 20px" : "0 54px",
+              display: "grid",
+              gridTemplateColumns: isMobile ? "1fr" : "1.05fr 0.95fr",
+              gap: isMobile ? "24px" : "40px",
+              alignItems: "start",
+            }}
+          >
+            <div>
+              <div
+                style={{
+                  color: "#d5ba72",
+                  fontSize: isMobile ? "13px" : "14px",
+                  letterSpacing: "0.18em",
+                  marginBottom: "16px",
+                }}
+              >
+                {c.contactEyebrow}
+              </div>
+
+              <h2
+                style={{
+                  fontSize: isMobile ? "34px" : "58px",
+                  lineHeight: 1.08,
+                  fontWeight: 500,
+                  letterSpacing: "-0.05em",
+                  maxWidth: "720px",
+                  margin: 0,
+                }}
+              >
+                {c.contactTitle}
+              </h2>
+
+              <p
+                style={{
+                  color: "rgba(255,255,255,0.78)",
+                  fontSize: isMobile ? "17px" : "18px",
+                  lineHeight: 1.7,
+                  maxWidth: "740px",
+                  marginTop: "20px",
+                }}
+              >
+                {c.contactText}
+              </p>
+
+              {formStatus === "success" && (
+                <div
+                  style={{
+                    marginTop: "22px",
+                    background: "rgba(15, 50, 36, 0.72)",
+                    border: "1px solid rgba(99, 179, 132, 0.35)",
+                    borderRadius: "12px",
+                    padding: "16px 18px",
+                    maxWidth: "560px",
+                  }}
+                >
+                  <div style={{ color: "#c6f6d5", fontWeight: 600, marginBottom: 6 }}>
+                    {c.successTitle}
+                  </div>
+                  <div style={{ color: "rgba(255,255,255,0.82)", lineHeight: 1.6 }}>
+                    {c.successText}
+                  </div>
+                </div>
+              )}
+
+              {formStatus === "error" && (
+                <div
+                  style={{
+                    marginTop: "22px",
+                    background: "rgba(74, 20, 20, 0.72)",
+                    border: "1px solid rgba(245, 101, 101, 0.28)",
+                    borderRadius: "12px",
+                    padding: "16px 18px",
+                    maxWidth: "560px",
+                  }}
+                >
+                  <div style={{ color: "#feb2b2", fontWeight: 600, marginBottom: 6 }}>
+                    {c.errorTitle}
+                  </div>
+                  <div style={{ color: "rgba(255,255,255,0.82)", lineHeight: 1.6 }}>
+                    {c.errorText}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div
+              style={{
+                background: "rgba(4,10,13,0.76)",
+                border: "1px solid rgba(255,255,255,0.08)",
+                borderRadius: "16px",
+                padding: isMobile ? "18px" : "24px",
+                backdropFilter: "blur(6px)",
+              }}
+            >
+              <div
+                style={{
+                  color: "#d5ba72",
+                  fontSize: isMobile ? "13px" : "14px",
+                  letterSpacing: "0.18em",
+                  marginBottom: "14px",
+                }}
+              >
+                {c.formTitle}
+              </div>
+
+              <form onSubmit={handleSubmit} style={{ display: "grid", gap: "12px" }}>
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder={c.namePlaceholder}
+                  style={{
+                    width: "100%",
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.12)",
+                    color: "#fff",
+                    borderRadius: "10px",
+                    padding: "14px 16px",
+                    fontSize: "16px",
+                  }}
+                />
+
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder={c.emailPlaceholder}
+                  style={{
+                    width: "100%",
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.12)",
+                    color: "#fff",
+                    borderRadius: "10px",
+                    padding: "14px 16px",
+                    fontSize: "16px",
+                  }}
+                />
+
+                <textarea
+                  name="message"
+                  required
+                  rows={5}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  placeholder={c.messagePlaceholder}
+                  style={{
+                    width: "100%",
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.12)",
+                    color: "#fff",
+                    borderRadius: "10px",
+                    padding: "14px 16px",
+                    fontSize: "16px",
+                    resize: "vertical",
+                    fontFamily: "Inter, sans-serif",
+                  }}
+                />
+
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "12px",
+                    flexWrap: "wrap",
+                    marginTop: "4px",
+                  }}
+                >
+                  <button
+                    type="submit"
+                    className="button-polish"
+                    disabled={formStatus === "submitting"}
+                    style={{
+                      display: "inline-block",
+                      color: "#fff",
+                      background: "transparent",
+                      border: "1px solid rgba(255,255,255,0.5)",
+                      padding: isMobile ? "14px 18px" : "16px 26px",
+                      borderRadius: "10px",
+                      fontSize: isMobile ? "17px" : "18px",
+                      textAlign: "center",
+                      cursor: formStatus === "submitting" ? "default" : "pointer",
+                      opacity: formStatus === "submitting" ? 0.7 : 1,
+                    }}
+                  >
+                    {formStatus === "submitting" ? c.submittingButton : c.submitButton}
+                  </button>
+
+                  <a
+                    className="button-polish"
+                    href="https://wa.me/34634562634?text=Hello%20Skyflick,%20I%20am%20interested%20in%20your%20services"
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{
+                      display: "inline-block",
+                      color: "#fff",
+                      textDecoration: "none",
+                      border: "1px solid rgba(255,255,255,0.5)",
+                      padding: isMobile ? "14px 18px" : "16px 26px",
+                      borderRadius: "10px",
+                      fontSize: isMobile ? "17px" : "18px",
+                      textAlign: "center",
+                      boxSizing: "border-box",
+                    }}
+                  >
+                    {c.whatsappButton}
+                  </a>
+                </div>
+              </form>
+
+              <div
+                style={{
+                  marginTop: "22px",
+                  paddingTop: "18px",
+                  borderTop: "1px solid rgba(255,255,255,0.08)",
+                }}
+              >
+                <div
+                  style={{
+                    color: "rgba(255,255,255,0.62)",
+                    fontSize: isMobile ? "13px" : "14px",
+                    letterSpacing: "0.18em",
+                    marginBottom: "12px",
+                  }}
+                >
+                  {c.sectorsEyebrow}
+                </div>
+
+                <div
+                  style={{
+                    color: "rgba(255,255,255,0.72)",
+                    fontSize: isMobile ? "14px" : "16px",
+                    lineHeight: 1.8,
+                    letterSpacing: "0.03em",
+                  }}
+                >
+                  {sectorsLine}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer
+          style={{
+            background: "#02080b",
+            padding: isMobile ? "32px 0" : "40px 0",
+            borderTop: "1px solid rgba(255,255,255,0.08)",
+          }}
+        >
+          <div
+            style={{
+              maxWidth: "1520px",
+              margin: "0 auto",
+              padding: isMobile ? "0 20px" : "0 54px",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: isMobile ? "flex-start" : "end",
+              gap: "30px",
+              flexWrap: "wrap",
+              flexDirection: isMobile ? "column" : "row",
+            }}
+          >
+            <div>
+              <div
+                style={{
+                  color: "#d5ba72",
+                  fontSize: isMobile ? "12px" : "13px",
+                  letterSpacing: "0.25em",
+                  marginBottom: "18px",
+                  fontWeight: 500,
+                }}
+              >
+                {c.footerEyebrow}
+              </div>
+
+              <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                <div
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    color: "#e5e7eb",
+                    fontSize: isMobile ? "15px" : "17px",
+                    letterSpacing: "0.03em",
+                  }}
+                >
+                  {c.zone}
+                </div>
+
+                <div
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    color: "#e5e7eb",
+                    fontSize: isMobile ? "15px" : "17px",
+                    letterSpacing: "0.03em",
+                  }}
+                >
+                  {c.phone}
+                </div>
+
+                <a
+                  href="mailto:skyflickesp@gmail.com?subject=New%20Skyflick%20project"
+                  className="link-polish"
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    color: "#e5e7eb",
+                    fontSize: isMobile ? "15px" : "17px",
+                    textDecoration: "none",
+                    letterSpacing: "0.03em",
+                  }}
+                >
+                  {c.email}
+                </a>
+
+                <a
+                  className="link-polish"
+                  href="https://instagram.com/_Skyflick_"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    color: "#e5e7eb",
+                    fontSize: isMobile ? "15px" : "17px",
+                    textDecoration: "none",
+                    letterSpacing: "0.03em",
+                  }}
+                >
+                  {c.instagram}
+                </a>
+              </div>
+            </div>
+
+            <div style={{ textAlign: isMobile ? "left" : "right" }}>
+              <div
+                style={{
+                  fontSize: isMobile ? "48px" : "86px",
+                  lineHeight: 0.9,
+                  fontWeight: 800,
+                  letterSpacing: "-0.06em",
+                  color: "rgba(255,255,255,0.12)",
+                }}
+              >
+                Skyflick
+              </div>
+
+              <div
+                style={{
+                  fontSize: isMobile ? "13px" : "18px",
+                  letterSpacing: isMobile ? "0.28em" : "0.42em",
+                  color: "rgba(255,255,255,0.2)",
+                  marginTop: "10px",
+                }}
+              >
+                STUDIO
+              </div>
+
+              <div
+                style={{
+                  marginTop: "18px",
+                  color: "rgba(255,255,255,0.4)",
+                  fontSize: isMobile ? "14px" : "16px",
+                }}
+              >
+                © 2024 Skyflick Studio
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </>
   );
 }
