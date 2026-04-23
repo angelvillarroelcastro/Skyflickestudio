@@ -63,7 +63,7 @@ const COPY: Record<Lang, Copy> = {
     service1Title: "Aerial audiovisual services",
     service1Text:
       "4K aerial video and photography for film, advertising and projects that need a carefully crafted image from above.",
-    service1Footer: "VILLAS · HOTELS · ADVERTISING",
+    service1Footer: "FILM · ADVERTISING · VILLAS · HOTELS",
     service2Title: "Technical inspection",
     service2Text:
       "Visual review of buildings, roofs, structures and industrial areas to detect issues quickly and safely.",
