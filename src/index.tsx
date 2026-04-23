@@ -1,12 +1,34 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-const rootElement = document.getElementById("root")!;
-const root = ReactDOM.createRoot(rootElement);
+  <title>Skyflick Studio</title>
+  <meta
+    name="description"
+    content="Serveis de dron a Mallorca: audiovisual, inspecció tècnica i cartografia multiespectral."
+  />
 
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+  <meta property="og:title" content="Skyflick Studio" />
+  <meta
+    property="og:description"
+    content="Imatge aèria professional amb dron a Mallorca."
+  />
+  <meta
+    property="og:image"
+    content="https://images.pexels.com/photos/36532574/pexels-photo-36532574.jpeg"
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://TU-DOMINIO.com" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Skyflick Studio" />
+  <meta
+    name="twitter:description"
+    content="Imatge aèria professional amb dron a Mallorca."
+  />
+  <meta
+    name="twitter:image"
+    content="https://images.pexels.com/photos/36532574/pexels-photo-36532574.jpeg"
+  />
+</head>
