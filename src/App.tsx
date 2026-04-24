@@ -4,7 +4,7 @@ type Lang = "en" | "ca" | "es" | "de";
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
 const WHATSAPP_URL =
-  "https://wa.me/34634562634?text=Hi%20Skyflick%20Studio,%20I%20need%20information%20about%20a%20drone%20project%20in%20Mallorca.";
+  "https://wa.me/34634562634?text=Hi%20Skyflick%20Studio,%20I%20would%20like%20information%20about%20a%20drone%20project%20in%20Mallorca.%20Can%20you%20help%20me%20with%20a%20quote%3F";
 
 const INSTAGRAM_URL = "https://www.instagram.com/skyflickstudio";
 const FORMSPREE_URL = "https://formspree.io/f/xjgjjgqr";
@@ -13,6 +13,7 @@ type Copy = {
   navContact: string;
   heroTitle: string;
   heroText: string;
+  heroSmallText: string;
   seoText: string;
   servicesEyebrow: string;
   service1Title: string;
@@ -62,25 +63,26 @@ type Copy = {
 };
 const COPY: Record<Lang, Copy> = {
   en: {
-    navContact: "Contact",
+    navContact: "Get a Quote",
     heroTitle: "Drone Services in Mallorca",
     heroText:
-      "Aerial filming, inspections and mapping for real estate, film and industry.",
+      "Aerial filming, drone inspections and mapping services in Mallorca for real estate, film and industry.",
+    heroSmallText: "Based in Mallorca · Operating across the Balearic Islands",
     seoText:
-      "Skyflick Studio provides professional drone services in Mallorca and the Balearic Islands, including aerial filming, real estate drone video, technical inspections and multispectral mapping.",
+      "Skyflick Studio provides professional drone services in Mallorca and the Balearic Islands, including aerial filming, real estate drone video, technical inspections and drone mapping.",
     servicesEyebrow: "SERVICES",
     service1Title: "Drone Filming in Mallorca",
     service1Text:
-      "4K aerial video and photography for film, advertising, villas, hotels and premium real estate projects.",
-    service1Footer: "FILM · ADVERTISING · VILLAS · HOTELS",
+      "Cinematic aerial video and photography in 4K for film, advertising, villas and high-end real estate. Designed to elevate your visuals and capture attention instantly.",
+    service1Footer: "FILM · ADVERTISING · REAL ESTATE",
     service2Title: "Drone Inspection Services",
     service2Text:
-      "Visual review of buildings, roofs, structures and industrial areas to detect issues quickly and safely.",
-    service2Footer: "INDUSTRY · INFRASTRUCTURE · BUILDINGS",
-    service3Title: "Multispectral Drone Mapping",
+      "Fast and safe aerial inspections for buildings, roofs and infrastructure. Get clear visual data without risk, downtime or costly access methods.",
+    service2Footer: "BUILDINGS · ROOFS · INFRASTRUCTURE",
+    service3Title: "Drone Mapping & Analysis",
     service3Text:
-      "Vegetation, coastline and technical surface analysis with advanced sensors and specialized capture.",
-    service3Footer: "VEGETATION · COASTLINE · ANALYSIS",
+      "Advanced drone mapping for vegetation, land and coastal analysis. Accurate data capture for environmental monitoring and technical projects.",
+    service3Footer: "MAPPING · ANALYSIS · ENVIRONMENT",
     statsEyebrow: "KEY POINTS",
     stat1Title: "SAFE FLIGHTS",
     stat1Text: "Certified operations and compliance.",
@@ -98,9 +100,9 @@ const COPY: Record<Lang, Copy> = {
     namePlaceholder: "Name",
     emailPlaceholder: "Email",
     messagePlaceholder: "Tell us about your project",
-    submitButton: "Send message",
+    submitButton: "Request information",
     submittingButton: "Sending...",
-    whatsappButton: "Chat on WhatsApp",
+    whatsappButton: "WhatsApp",
     sectorsEyebrow: "AREAS / SECTORS",
     sector1: "Film and advertising",
     sector2: "Architecture and real estate",
@@ -119,25 +121,26 @@ const COPY: Record<Lang, Copy> = {
     errorText: "Please try again or contact us via WhatsApp.",
   },
     ca: {
-    navContact: "Contacte",
+    navContact: "Demanar pressupost",
     heroTitle: "Serveis de dron a Mallorca",
     heroText:
-      "Filmació aèria, inspeccions i cartografia per a immobiliària, cinema i indústria.",
+      "Filmació aèria, inspeccions amb dron i cartografia a Mallorca per a immobiliària, cinema i indústria.",
+    heroSmallText: "Amb base a Mallorca · Operem a totes les Illes Balears",
     seoText:
-      "Skyflick Studio ofereix serveis professionals de dron a Mallorca i les Illes Balears: filmació aèria, vídeo immobiliari, inspeccions tècniques i mapes multiespectrals.",
+      "Skyflick Studio ofereix serveis professionals de dron a Mallorca i les Illes Balears: filmació aèria, vídeo immobiliari, inspeccions tècniques i cartografia amb dron.",
     servicesEyebrow: "ELS NOSTRES SERVEIS",
     service1Title: "Filmació aèria amb dron",
     service1Text:
-      "Vídeo i fotografia aèria en 4K per a cinema, publicitat, vil·les, hotels i projectes immobiliaris premium.",
-    service1Footer: "CINEMA · PUBLICITAT · VIL·LES · HOTELS",
+      "Vídeo i fotografia aèria cinematogràfica en 4K per a cinema, publicitat, vil·les i immobiliària premium. Pensat per elevar la imatge del projecte i captar l’atenció.",
+    service1Footer: "CINEMA · PUBLICITAT · IMMOBILIÀRIA",
     service2Title: "Inspecció tècnica amb dron",
     service2Text:
-      "Revisió visual d’edificis, cobertes, estructures i zones industrials per detectar incidències amb rapidesa i seguretat.",
-    service2Footer: "INDÚSTRIA · INFRAESTRUCTURES · EDIFICIS",
-    service3Title: "Mapes multiespectrals",
+      "Inspeccions aèries ràpides i segures per a edificis, cobertes i infraestructures. Dades visuals clares sense riscos, interrupcions ni accessos costosos.",
+    service2Footer: "EDIFICIS · COBERTES · INFRAESTRUCTURES",
+    service3Title: "Cartografia i anàlisi amb dron",
     service3Text:
-      "Anàlisi de vegetació, costa i superfícies tècniques amb sensors avançats i captura especialitzada.",
-    service3Footer: "VEGETACIÓ · COSTA · ANÀLISI",
+      "Cartografia avançada per a vegetació, territori i anàlisi de costa. Captura de dades precisa per a projectes ambientals i tècnics.",
+    service3Footer: "CARTOGRAFIA · ANÀLISI · MEDI AMBIENT",
     statsEyebrow: "PUNTS CLAU",
     stat1Title: "VOLS SEGURS",
     stat1Text: "Operacions certificades i compliment normatiu.",
@@ -155,7 +158,7 @@ const COPY: Record<Lang, Copy> = {
     namePlaceholder: "Nom",
     emailPlaceholder: "Correu electrònic",
     messagePlaceholder: "Explica’ns el teu projecte",
-    submitButton: "Enviar missatge",
+    submitButton: "Demanar informació",
     submittingButton: "Enviant...",
     whatsappButton: "WhatsApp",
     sectorsEyebrow: "ÀREES / SECTORS",
@@ -176,25 +179,26 @@ const COPY: Record<Lang, Copy> = {
     errorText: "Torna-ho a provar o escriu-nos per WhatsApp.",
   },
     es: {
-    navContact: "Contacto",
+    navContact: "Pedir presupuesto",
     heroTitle: "Servicios de dron en Mallorca",
     heroText:
-      "Filmación aérea, inspecciones y cartografía para inmobiliaria, cine e industria.",
+      "Filmación aérea, inspecciones con dron y cartografía en Mallorca para inmobiliaria, cine e industria.",
+    heroSmallText: "Con base en Mallorca · Operamos en todas las Islas Baleares",
     seoText:
-      "Skyflick Studio ofrece servicios profesionales de dron en Mallorca y las Islas Baleares: filmación aérea, vídeo inmobiliario, inspecciones técnicas y mapas multiespectrales.",
+      "Skyflick Studio ofrece servicios profesionales de dron en Mallorca y las Islas Baleares: filmación aérea, vídeo inmobiliario, inspecciones técnicas y cartografía con dron.",
     servicesEyebrow: "SERVICIOS",
     service1Title: "Filmación aérea con dron",
     service1Text:
-      "Vídeo y fotografía aérea en 4K para cine, publicidad, villas, hoteles y proyectos inmobiliarios premium.",
-    service1Footer: "CINE · PUBLICIDAD · VILLAS · HOTELES",
+      "Vídeo y fotografía aérea cinematográfica en 4K para cine, publicidad, villas e inmobiliaria premium. Diseñado para elevar la imagen del proyecto y captar atención al instante.",
+    service1Footer: "CINE · PUBLICIDAD · INMOBILIARIA",
     service2Title: "Inspección técnica con dron",
     service2Text:
-      "Revisión visual de edificios, cubiertas, estructuras y zonas industriales para detectar incidencias con rapidez y seguridad.",
-    service2Footer: "INDUSTRIA · INFRAESTRUCTURAS · EDIFICIOS",
-    service3Title: "Mapas multiespectrales",
+      "Inspecciones aéreas rápidas y seguras para edificios, cubiertas e infraestructuras. Obtén datos visuales claros sin riesgos, interrupciones ni accesos costosos.",
+    service2Footer: "EDIFICIOS · CUBIERTAS · INFRAESTRUCTURAS",
+    service3Title: "Cartografía y análisis con dron",
     service3Text:
-      "Análisis de vegetación, costa y superficies técnicas con sensores avanzados y captura especializada.",
-    service3Footer: "VEGETACIÓN · COSTA · ANÁLISIS",
+      "Cartografía avanzada para análisis de vegetación, terreno y costa. Captura de datos precisa para proyectos ambientales y técnicos.",
+    service3Footer: "CARTOGRAFÍA · ANÁLISIS · MEDIO AMBIENTE",
     statsEyebrow: "PUNTOS CLAVE",
     stat1Title: "VUELOS SEGUROS",
     stat1Text: "Operaciones certificadas y cumplimiento normativo.",
@@ -212,7 +216,7 @@ const COPY: Record<Lang, Copy> = {
     namePlaceholder: "Nombre",
     emailPlaceholder: "Email",
     messagePlaceholder: "Cuéntanos tu proyecto",
-    submitButton: "Enviar mensaje",
+    submitButton: "Pedir información",
     submittingButton: "Enviando...",
     whatsappButton: "WhatsApp",
     sectorsEyebrow: "SECTORES",
@@ -233,25 +237,26 @@ const COPY: Record<Lang, Copy> = {
     errorText: "Inténtalo de nuevo o contáctanos por WhatsApp.",
   },
     de: {
-    navContact: "Kontakt",
+    navContact: "Angebot anfragen",
     heroTitle: "Drohnenservices auf Mallorca",
     heroText:
-      "Luftaufnahmen, Inspektionen und Mapping für Immobilien, Film und Industrie.",
+      "Luftaufnahmen, Drohneninspektionen und Mapping auf Mallorca für Immobilien, Film und Industrie.",
+    heroSmallText: "Sitz auf Mallorca · Einsatz auf den Balearen",
     seoText:
-      "Skyflick Studio bietet professionelle Drohnendienstleistungen auf Mallorca und den Balearen: Luftaufnahmen, Immobilienvideos, technische Inspektionen und multispektrale Karten.",
+      "Skyflick Studio bietet professionelle Drohnendienstleistungen auf Mallorca und den Balearen: Luftaufnahmen, Immobilienvideos, technische Inspektionen und Drohnenmapping.",
     servicesEyebrow: "DIENSTLEISTUNGEN",
-    service1Title: "Luftaufnahmen mit Drohne",
+    service1Title: "Drohnenaufnahmen auf Mallorca",
     service1Text:
-      "4K Video und Fotografie für Film, Werbung, Villen, Hotels und hochwertige Immobilienprojekte.",
-    service1Footer: "FILM · WERBUNG · VILLEN · HOTELS",
-    service2Title: "Technische Inspektionen",
+      "Cinematische 4K-Luftaufnahmen und Fotografie für Film, Werbung, Villen und hochwertige Immobilienprojekte. Entwickelt, um visuelle Qualität und Aufmerksamkeit zu steigern.",
+    service1Footer: "FILM · WERBUNG · IMMOBILIEN",
+    service2Title: "Drohneninspektionen",
     service2Text:
-      "Visuelle Analyse von Gebäuden, Dächern und Infrastruktur mit schneller und sicherer Datenerfassung.",
-    service2Footer: "INDUSTRIE · INFRASTRUKTUR · GEBÄUDE",
-    service3Title: "Multispektrales Mapping",
+      "Schnelle und sichere Luftinspektionen für Gebäude, Dächer und Infrastruktur. Klare visuelle Daten ohne Risiko, Ausfallzeiten oder teure Zugangsmethoden.",
+    service2Footer: "GEBÄUDE · DÄCHER · INFRASTRUKTUR",
+    service3Title: "Drohnenmapping & Analyse",
     service3Text:
-      "Analyse von Vegetation, Landflächen und Umwelt mit moderner Sensortechnik.",
-    service3Footer: "UMWELT · LAND · ANALYSE",
+      "Fortschrittliches Drohnenmapping für Vegetation, Land- und Küstenanalyse. Präzise Datenerfassung für Umwelt- und technische Projekte.",
+    service3Footer: "MAPPING · ANALYSE · UMWELT",
     statsEyebrow: "WICHTIGSTE PUNKTE",
     stat1Title: "SICHERE FLÜGE",
     stat1Text: "Zertifizierte und legale Einsätze.",
@@ -269,7 +274,7 @@ const COPY: Record<Lang, Copy> = {
     namePlaceholder: "Name",
     emailPlaceholder: "E-Mail",
     messagePlaceholder: "Ihr Projekt",
-    submitButton: "Senden",
+    submitButton: "Information anfragen",
     submittingButton: "Senden...",
     whatsappButton: "WhatsApp",
     sectorsEyebrow: "BEREICHE",
@@ -671,9 +676,14 @@ export default function App() {
               <h1 style={{ fontSize: isMobile ? "44px" : "78px", lineHeight: 1.03, fontWeight: 500, letterSpacing: "-0.055em", margin: 0 }}>
                 {c.heroTitle}
               </h1>
+
               <p style={{ fontSize: isMobile ? "18px" : "22px", lineHeight: 1.55, color: "rgba(255,255,255,0.86)", maxWidth: "760px", margin: "22px auto 0 auto" }}>
                 {c.heroText}
               </p>
+
+              <div style={{ marginTop: "14px", fontSize: isMobile ? "13px" : "14px", letterSpacing: "0.12em", color: "rgba(255,255,255,0.58)", textTransform: "uppercase" }}>
+                {c.heroSmallText}
+              </div>
 
               <div style={{ marginTop: "32px", display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}>
                 <a href="#contacte" className="button-polish" style={{ color: "#fff", textDecoration: "none", border: "1px solid rgba(255,255,255,0.65)", padding: isMobile ? "14px 22px" : "16px 28px", borderRadius: "12px" }}>
@@ -1049,14 +1059,22 @@ export default function App() {
 
                 <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
                   <MailIcon />
-                  <a href="mailto:skyflickesp@gmail.com?subject=Drone%20Project%20Mallorca" className="footer-link">
+                  <a
+                    href="mailto:skyflickesp@gmail.com?subject=Drone%20Project%20Mallorca&body=Hi%20Skyflick%20Studio,%20I%20am%20interested%20in%20your%20drone%20services%20in%20Mallorca."
+                    className="footer-link"
+                  >
                     {cleanContactText(c.email)}
                   </a>
                 </div>
 
                 <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
                   <InstagramIcon />
-                  <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className="footer-link">
+                  <a
+                    href={INSTAGRAM_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="footer-link"
+                  >
                     {cleanContactText(c.instagram)}
                   </a>
                 </div>
