@@ -538,6 +538,8 @@ export default function App() {
           color: #f5f5f5;
           font-family: Inter, system-ui, sans-serif;
         }
+        a { color: inherit; text-decoration: none; }
+        a:visited { color: inherit; }
         input, textarea, button { font: inherit; }
         input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.45); }
         input:focus, textarea:focus {
@@ -561,8 +563,30 @@ export default function App() {
           border-color: rgba(255,255,255,0.85);
           box-shadow: 0 0 18px rgba(213,186,114,0.18);
         }
-                .link-polish { transition: opacity 180ms ease; }
-        .link-polish:hover { opacity: 0.82; }
+                .footer-link {
+          position: relative;
+          color: #e5e7eb;
+          text-decoration: none;
+          opacity: 0.85;
+          transition: all 0.25s ease;
+        }
+        .footer-link::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -3px;
+          width: 0%;
+          height: 1px;
+          background: #d5ba72;
+          transition: width 0.3s ease;
+        }
+        .footer-link:hover {
+          color: #d5ba72;
+          opacity: 1;
+          transform: translateX(2px);
+          text-shadow: 0 0 6px rgba(213, 186, 114, 0.35);
+        }
+        .footer-link:hover::after { width: 100%; }
         .floating-whatsapp {
           position: fixed;
           right: 18px;
@@ -642,14 +666,25 @@ export default function App() {
             </div>
           </div>
 
-          <div style={{ maxWidth: "1520px", margin: "0 auto", padding: isMobile ? "8px 20px 36px 20px" : "18px 54px 54px 54px" }}>
-            <div style={{ maxWidth: isMobile ? "100%" : "760px", marginTop: isMobile ? "18px" : "34px" }}>
-              <h1 style={{ fontSize: isMobile ? "40px" : "68px", lineHeight: 1.05, fontWeight: 500, letterSpacing: "-0.05em", margin: 0 }}>
+          <div style={{ maxWidth: "1520px", margin: "0 auto", padding: isMobile ? "40px 20px 74px 20px" : "90px 54px 120px 54px" }}>
+            <div style={{ maxWidth: "860px", margin: "0 auto", textAlign: "center" }}>
+              <h1 style={{ fontSize: isMobile ? "44px" : "78px", lineHeight: 1.03, fontWeight: 500, letterSpacing: "-0.055em", margin: 0 }}>
                 {c.heroTitle}
               </h1>
-              <p style={{ fontSize: isMobile ? "18px" : "22px", lineHeight: 1.55, color: "rgba(255,255,255,0.86)", maxWidth: "760px", marginTop: "20px" }}>
+              <p style={{ fontSize: isMobile ? "18px" : "22px", lineHeight: 1.55, color: "rgba(255,255,255,0.86)", maxWidth: "760px", margin: "22px auto 0 auto" }}>
                 {c.heroText}
               </p>
+
+              <div style={{ marginTop: "32px", display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}>
+                <a href="#contacte" className="button-polish" style={{ color: "#fff", textDecoration: "none", border: "1px solid rgba(255,255,255,0.65)", padding: isMobile ? "14px 22px" : "16px 28px", borderRadius: "12px" }}>
+                  {c.navContact}
+                </a>
+
+                <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="button-polish" style={{ display: "inline-flex", alignItems: "center", gap: "10px", color: "#fff", textDecoration: "none", border: "1px solid rgba(255,255,255,0.65)", padding: isMobile ? "14px 22px" : "16px 28px", borderRadius: "12px" }}>
+                  <WhatsAppIcon size={18} />
+                  {c.whatsappButton}
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -697,226 +732,377 @@ export default function App() {
             </p>
           </div>
         </section>
-        <section
-  id="contacte"
-  style={{
-    minHeight: isMobile ? "auto" : "560px",
-    background:
-      "linear-gradient(90deg, rgba(3,12,16,0.84) 0%, rgba(3,12,16,0.5) 35%, rgba(3,12,16,0.12) 62%), url('https://images.pexels.com/photos/1173777/pexels-photo-1173777.jpeg?auto=compress&cs=tinysrgb&w=1800') center/cover no-repeat",
-    padding: isMobile ? "44px 0" : "70px 0",
-  }}
->
-  <div
-    style={{
-      maxWidth: "1520px",
-      margin: "0 auto",
-      padding: isMobile ? "0 20px" : "0 54px",
-      display: "grid",
-      gridTemplateColumns: isMobile ? "1fr" : "1.05fr 0.95fr",
-      gap: isMobile ? "24px" : "40px",
-      alignItems: "start",
-    }}
-  >
-    <div>
-      <div
-        style={{
-          color: "#d5ba72",
-          fontSize: isMobile ? "13px" : "14px",
-          letterSpacing: "0.18em",
-          marginBottom: "16px",
-        }}
-      >
-        {c.contactEyebrow}
-      </div>
-
-      <h2
-        style={{
-          fontSize: isMobile ? "34px" : "58px",
-          lineHeight: 1.08,
-          fontWeight: 500,
-          letterSpacing: "-0.05em",
-          maxWidth: "720px",
-          margin: 0,
-        }}
-      >
-        {c.contactTitle}
-      </h2>
-
-      <p
-        style={{
-          color: "rgba(255,255,255,0.78)",
-          fontSize: isMobile ? "17px" : "18px",
-          lineHeight: 1.7,
-          maxWidth: "740px",
-          marginTop: "20px",
-        }}
-      >
-        {c.contactText}
-      </p>
-    </div>
-
-    <div
-      style={{
-        background: "rgba(4,10,13,0.76)",
-        border: "1px solid rgba(255,255,255,0.08)",
-        borderRadius: "16px",
-        padding: isMobile ? "18px" : "24px",
-        backdropFilter: "blur(6px)",
-      }}
-    >
-      <div
-        style={{
-          color: "#d5ba72",
-          fontSize: isMobile ? "13px" : "14px",
-          letterSpacing: "0.18em",
-          marginBottom: "14px",
-        }}
-      >
-        {c.formTitle}
-      </div>
-
-      <form onSubmit={handleSubmit} style={{ display: "grid", gap: "12px" }}>
-        <input
-          type="text"
-          required
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder={c.namePlaceholder}
+                <section
+          id="contacte"
           style={{
-            width: "100%",
-            background: "rgba(255,255,255,0.04)",
-            border: "1px solid rgba(255,255,255,0.12)",
-            color: "#fff",
-            borderRadius: "10px",
-            padding: "14px 16px",
+            minHeight: isMobile ? "auto" : "560px",
+            background:
+              "linear-gradient(90deg, rgba(3,12,16,0.84) 0%, rgba(3,12,16,0.5) 35%, rgba(3,12,16,0.12) 62%), url('https://images.pexels.com/photos/1173777/pexels-photo-1173777.jpeg?auto=compress&cs=tinysrgb&w=1800') center/cover no-repeat",
+            padding: isMobile ? "44px 0" : "70px 0",
           }}
-        />
-
-        <input
-          type="email"
-          required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder={c.emailPlaceholder}
-          style={{
-            width: "100%",
-            background: "rgba(255,255,255,0.04)",
-            border: "1px solid rgba(255,255,255,0.12)",
-            color: "#fff",
-            borderRadius: "10px",
-            padding: "14px 16px",
-          }}
-        />
-
-        <textarea
-          required
-          rows={5}
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          placeholder={c.messagePlaceholder}
-          style={{
-            width: "100%",
-            background: "rgba(255,255,255,0.04)",
-            border: "1px solid rgba(255,255,255,0.12)",
-            color: "#fff",
-            borderRadius: "10px",
-            padding: "14px 16px",
-          }}
-        />
-                <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-          <button
-            type="submit"
-            disabled={formStatus === "submitting"}
+        >
+          <div
             style={{
-              color: "#fff",
-              background: "transparent",
-              border: "1px solid rgba(255,255,255,0.5)",
-              padding: "14px 20px",
-              borderRadius: "10px",
-              cursor: "pointer",
+              maxWidth: "1520px",
+              margin: "0 auto",
+              padding: isMobile ? "0 20px" : "0 54px",
+              display: "grid",
+              gridTemplateColumns: isMobile ? "1fr" : "1.05fr 0.95fr",
+              gap: isMobile ? "24px" : "40px",
+              alignItems: "start",
             }}
           >
-            {formStatus === "submitting"
-              ? c.submittingButton
-              : c.submitButton}
-          </button>
+            <div>
+              <div
+                style={{
+                  color: "#d5ba72",
+                  fontSize: isMobile ? "13px" : "14px",
+                  letterSpacing: "0.18em",
+                  marginBottom: "16px",
+                }}
+              >
+                {c.contactEyebrow}
+              </div>
 
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noreferrer"
+              <h2
+                style={{
+                  fontSize: isMobile ? "34px" : "58px",
+                  lineHeight: 1.08,
+                  fontWeight: 500,
+                  letterSpacing: "-0.05em",
+                  maxWidth: "720px",
+                  margin: 0,
+                }}
+              >
+                {c.contactTitle}
+              </h2>
+
+              <p
+                style={{
+                  color: "rgba(255,255,255,0.78)",
+                  fontSize: isMobile ? "17px" : "18px",
+                  lineHeight: 1.7,
+                  maxWidth: "740px",
+                  marginTop: "20px",
+                }}
+              >
+                {c.contactText}
+              </p>
+
+              {formStatus === "success" && (
+                <div
+                  style={{
+                    marginTop: "22px",
+                    background: "rgba(15, 50, 36, 0.72)",
+                    border: "1px solid rgba(99, 179, 132, 0.35)",
+                    borderRadius: "12px",
+                    padding: "16px 18px",
+                    maxWidth: "560px",
+                  }}
+                >
+                  <div style={{ color: "#c6f6d5", fontWeight: 600, marginBottom: 6 }}>
+                    {c.successTitle}
+                  </div>
+                  <div style={{ color: "rgba(255,255,255,0.82)", lineHeight: 1.6 }}>
+                    {c.successText}
+                  </div>
+                </div>
+              )}
+
+              {formStatus === "error" && (
+                <div
+                  style={{
+                    marginTop: "22px",
+                    background: "rgba(74, 20, 20, 0.72)",
+                    border: "1px solid rgba(245, 101, 101, 0.28)",
+                    borderRadius: "12px",
+                    padding: "16px 18px",
+                    maxWidth: "560px",
+                  }}
+                >
+                  <div style={{ color: "#feb2b2", fontWeight: 600, marginBottom: 6 }}>
+                    {c.errorTitle}
+                  </div>
+                  <div style={{ color: "rgba(255,255,255,0.82)", lineHeight: 1.6 }}>
+                    {c.errorText}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div
+              style={{
+                background: "rgba(4,10,13,0.76)",
+                border: "1px solid rgba(255,255,255,0.08)",
+                borderRadius: "16px",
+                padding: isMobile ? "18px" : "24px",
+                backdropFilter: "blur(6px)",
+              }}
+            >
+              <div
+                style={{
+                  color: "#d5ba72",
+                  fontSize: isMobile ? "13px" : "14px",
+                  letterSpacing: "0.18em",
+                  marginBottom: "14px",
+                }}
+              >
+                {c.formTitle}
+              </div>
+
+              <form onSubmit={handleSubmit} style={{ display: "grid", gap: "12px" }}>
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder={c.namePlaceholder}
+                  style={{
+                    width: "100%",
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.12)",
+                    color: "#fff",
+                    borderRadius: "10px",
+                    padding: "14px 16px",
+                    fontSize: "16px",
+                  }}
+                />
+
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder={c.emailPlaceholder}
+                  style={{
+                    width: "100%",
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.12)",
+                    color: "#fff",
+                    borderRadius: "10px",
+                    padding: "14px 16px",
+                    fontSize: "16px",
+                  }}
+                />
+
+                <textarea
+                  name="message"
+                  required
+                  rows={5}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  placeholder={c.messagePlaceholder}
+                  style={{
+                    width: "100%",
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.12)",
+                    color: "#fff",
+                    borderRadius: "10px",
+                    padding: "14px 16px",
+                    fontSize: "16px",
+                    resize: "vertical",
+                    fontFamily: "Inter, sans-serif",
+                  }}
+                />
+                                <div
+                  style={{
+                    display: "flex",
+                    gap: "12px",
+                    flexWrap: "wrap",
+                    marginTop: "4px",
+                  }}
+                >
+                  <button
+                    type="submit"
+                    className="button-polish"
+                    disabled={formStatus === "submitting"}
+                    style={{
+                      display: "inline-block",
+                      color: "#fff",
+                      background: "transparent",
+                      border: "1px solid rgba(255,255,255,0.5)",
+                      padding: isMobile ? "14px 18px" : "16px 26px",
+                      borderRadius: "10px",
+                      fontSize: isMobile ? "17px" : "18px",
+                      textAlign: "center",
+                      cursor: formStatus === "submitting" ? "default" : "pointer",
+                      opacity: formStatus === "submitting" ? 0.7 : 1,
+                    }}
+                  >
+                    {formStatus === "submitting" ? c.submittingButton : c.submitButton}
+                  </button>
+
+                  <a
+                    className="button-polish"
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "10px",
+                      color: "#fff",
+                      textDecoration: "none",
+                      border: "1px solid rgba(255,255,255,0.5)",
+                      padding: isMobile ? "14px 18px" : "16px 26px",
+                      borderRadius: "10px",
+                      fontSize: isMobile ? "17px" : "18px",
+                      textAlign: "center",
+                    }}
+                  >
+                    <WhatsAppIcon size={18} />
+                    {c.whatsappButton}
+                  </a>
+                </div>
+              </form>
+
+              <div
+                style={{
+                  marginTop: "22px",
+                  paddingTop: "18px",
+                  borderTop: "1px solid rgba(255,255,255,0.08)",
+                }}
+              >
+                <div
+                  style={{
+                    color: "rgba(255,255,255,0.62)",
+                    fontSize: isMobile ? "13px" : "14px",
+                    letterSpacing: "0.18em",
+                    marginBottom: "12px",
+                  }}
+                >
+                  {c.sectorsEyebrow}
+                </div>
+
+                <div
+                  style={{
+                    color: "rgba(255,255,255,0.72)",
+                    fontSize: isMobile ? "14px" : "16px",
+                    lineHeight: 1.8,
+                    letterSpacing: "0.03em",
+                  }}
+                >
+                  {sectorsLine}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer
+          style={{
+            background: "#02080b",
+            padding: isMobile ? "32px 0" : "40px 0",
+            borderTop: "1px solid rgba(255,255,255,0.08)",
+          }}
+        >
+          <div
             style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "10px",
-              color: "#fff",
-              textDecoration: "none",
-              border: "1px solid rgba(255,255,255,0.5)",
-              padding: "14px 20px",
-              borderRadius: "10px",
+              maxWidth: "1520px",
+              margin: "0 auto",
+              padding: isMobile ? "0 20px" : "0 54px",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: isMobile ? "flex-start" : "end",
+              gap: "30px",
+              flexWrap: "wrap",
+              flexDirection: isMobile ? "column" : "row",
             }}
           >
-            <WhatsAppIcon />
-            {c.whatsappButton}
-          </a>
-        </div>
-      </form>
-    </div>
-  </div>
-</section>
+            <div>
+              <div
+                style={{
+                  color: "#d5ba72",
+                  fontSize: isMobile ? "12px" : "13px",
+                  letterSpacing: "0.25em",
+                  marginBottom: "18px",
+                  fontWeight: 500,
+                }}
+              >
+                {c.footerEyebrow}
+              </div>
 
-<footer
-  style={{
-    background: "#02080b",
-    padding: "40px 0",
-    borderTop: "1px solid rgba(255,255,255,0.08)",
-  }}
->
-  <div
-    style={{
-      maxWidth: "1520px",
-      margin: "0 auto",
-      padding: "0 54px",
-      display: "flex",
-      justifyContent: "space-between",
-      flexWrap: "wrap",
-      gap: "30px",
-    }}
-  >
-    <div>
-      <div style={{ color: "#d5ba72", marginBottom: "16px" }}>
-        {c.footerEyebrow}
-      </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "16px",
+                  fontFamily: "'JetBrains Mono', monospace",
+                  color: "#e5e7eb",
+                  fontSize: isMobile ? "15px" : "17px",
+                  letterSpacing: "0.03em",
+                }}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                  <LocationIcon />
+                  <span>{cleanContactText(c.zone)}</span>
+                </div>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-        <div style={{ display: "flex", gap: "10px" }}>
-          <LocationIcon /> {cleanContactText(c.zone)}
-        </div>
+                <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                  <PhoneIcon />
+                  <a href="tel:+34634562634" className="footer-link">
+                    {cleanContactText(c.phone)}
+                  </a>
+                </div>
 
-        <div style={{ display: "flex", gap: "10px" }}>
-          <PhoneIcon />
-          <a href="tel:+34634562634" className="footer-link">
-  {cleanContactText(c.phone)}
-</a>
-        </div>
+                <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                  <MailIcon />
+                  <a href="mailto:skyflickesp@gmail.com?subject=Drone%20Project%20Mallorca" className="footer-link">
+                    {cleanContactText(c.email)}
+                  </a>
+                </div>
 
-        <div style={{ display: "flex", gap: "10px" }}>
-          <MailIcon />
-          <a href="mailto:skyflickesp@gmail.com">
-  {cleanContactText(c.email)}
-</a>
-        </div>
+                <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                  <InstagramIcon />
+                  <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className="footer-link">
+                    {cleanContactText(c.instagram)}
+                  </a>
+                </div>
 
-        <div style={{ display: "flex", gap: "10px" }}>
-          <InstagramIcon />
-          <a href={INSTAGRAM_URL} target="_blank" className="footer-link">
-  @skyflickstudio
-</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
+                <div style={{ fontSize: "12px", opacity: 0.4, marginTop: "2px" }}>
+                  Drone services Mallorca · Aerial filming · Drone inspection · Balearic Islands
+                </div>
+              </div>
+            </div>
+
+            <div style={{ textAlign: isMobile ? "left" : "right" }}>
+              <div
+                style={{
+                  fontSize: isMobile ? "48px" : "86px",
+                  lineHeight: 0.9,
+                  fontWeight: 800,
+                  letterSpacing: "-0.06em",
+                  color: "rgba(255,255,255,0.12)",
+                }}
+              >
+                Skyflick
+              </div>
+
+              <div
+                style={{
+                  fontSize: isMobile ? "13px" : "18px",
+                  letterSpacing: isMobile ? "0.28em" : "0.42em",
+                  color: "rgba(255,255,255,0.2)",
+                  marginTop: "10px",
+                }}
+              >
+                STUDIO
+              </div>
+
+              <div
+                style={{
+                  marginTop: "18px",
+                  color: "rgba(255,255,255,0.4)",
+                  fontSize: isMobile ? "14px" : "16px",
+                }}
+              >
+                © 2024 Skyflick Studio
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
     </>
   );
