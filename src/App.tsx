@@ -60,69 +60,73 @@ type Copy = {
   errorTitle: string;
   errorText: string;
 };
-const COPY: Record<Lang, Copy> = {
-  en: {
-    navContact: "Contact",
-    heroTitle: "Drone Services in Mallorca & Balearic Islands",
-    heroText:
-      "Aerial filming, technical inspection and multispectral drone mapping for real estate, film, industry, vegetation and coastline.",
-    seoText:
-      "Skyflick Studio provides professional drone services in Mallorca and the Balearic Islands, including aerial filming, real estate drone video, technical inspections and multispectral mapping.",
-    servicesEyebrow: "SERVICES",
-    service1Title: "Drone Filming in Mallorca",
-    service1Text:
-      "4K aerial video and photography for film, advertising, villas, hotels and premium real estate projects.",
-    service1Footer: "FILM · ADVERTISING · VILLAS · HOTELS",
-    service2Title: "Drone Inspection Services",
-    service2Text:
-      "Visual review of buildings, roofs, structures and industrial areas to detect issues quickly and safely.",
-    service2Footer: "INDUSTRY · INFRASTRUCTURE · BUILDINGS",
-    service3Title: "Multispectral Drone Mapping",
-    service3Text:
-      "Vegetation, coastline and technical surface analysis with advanced sensors and specialized capture.",
-    service3Footer: "VEGETATION · COASTLINE · ANALYSIS",
-    statsEyebrow: "KEY POINTS",
-    stat1Title: "SAFE FLIGHTS",
-    stat1Text: "Certified operations and compliance.",
-    stat2Title: "4K QUALITY",
-    stat2Text: "High-resolution capture for professional results.",
-    stat3Title: "PRECISE DATA",
-    stat3Text: "Advanced technology for reliable visual analysis.",
-    stat4Title: "FAST DELIVERY",
-    stat4Text: "Efficient processing tailored to each project.",
-    contactEyebrow: "CONTACT",
-    contactTitle: "Let’s talk about your project",
-    contactText:
-      "Tell us what you need and we will help define the best aerial solution for your project in Mallorca or the Balearic Islands.",
-    formTitle: "Write to us directly",
-    namePlaceholder: "Name",
-    emailPlaceholder: "Email",
-    messagePlaceholder: "Tell us about your project",
-    submitButton: "Send message",
-    submittingButton: "Sending...",
-    whatsappButton: "WhatsApp",
-    sectorsEyebrow: "AREAS / SECTORS",
-    sector1: "Film and advertising",
-    sector2: "Architecture and real estate",
-    sector3: "Industry and infrastructure",
-    sector4: "Environment and territory",
-    sector5: "Sport and vegetation",
-    footerEyebrow: "CONTACT",
-    zone: "Area: Mallorca · Balearic Islands · Spain",
-    phone: "Phone: +34 634 562 634",
-    email: "Email: skyflickesp@gmail.com",
-    instagram: "Instagram: @skyflickstudio",
-    floatingWhatsapp: "WhatsApp",
-    successTitle: "Message sent",
-    successText: "Thank you. We’ll get back to you as soon as possible.",
-    errorTitle: "Something went wrong",
-    errorText: "Please try again or contact us via WhatsApp.",
-  },
-    ca: {
+import React, { useEffect, useMemo, useState } from "react";
+
+type Lang = "en" | "ca" | "es" | "de";
+type FormStatus = "idle" | "submitting" | "success" | "error";
+
+const WHATSAPP_URL =
+  "https://wa.me/34634562634?text=Hi%20Skyflick%20Studio,%20I%20need%20information%20about%20a%20drone%20project%20in%20Mallorca.";
+
+const INSTAGRAM_URL = "https://www.instagram.com/skyflickstudio";
+const FORMSPREE_URL = "https://formspree.io/f/xjgjjgqr";
+
+type Copy = {
+  navContact: string;
+  heroTitle: string;
+  heroText: string;
+  seoText: string;
+  servicesEyebrow: string;
+  service1Title: string;
+  service1Text: string;
+  service1Footer: string;
+  service2Title: string;
+  service2Text: string;
+  service2Footer: string;
+  service3Title: string;
+  service3Text: string;
+  service3Footer: string;
+  statsEyebrow: string;
+  stat1Title: string;
+  stat1Text: string;
+  stat2Title: string;
+  stat2Text: string;
+  stat3Title: string;
+  stat3Text: string;
+  stat4Title: string;
+  stat4Text: string;
+  contactEyebrow: string;
+  contactTitle: string;
+  contactText: string;
+  formTitle: string;
+  namePlaceholder: string;
+  emailPlaceholder: string;
+  messagePlaceholder: string;
+  submitButton: string;
+  submittingButton: string;
+  whatsappButton: string;
+  sectorsEyebrow: string;
+  sector1: string;
+  sector2: string;
+  sector3: string;
+  sector4: string;
+  sector5: string;
+  footerEyebrow: string;
+  zone: string;
+  phone: string;
+  email: string;
+  instagram: string;
+  floatingWhatsapp: string;
+  successTitle: string;
+  successText: string;
+  errorTitle: string;
+  errorText: string;
+};
+  ca: {
     navContact: "Contacte",
-    heroTitle: "Serveis de dron a Mallorca i Illes Balears",
+    heroTitle: "Serveis de dron a Mallorca",
     heroText:
-      "Filmació aèria, inspecció tècnica i cartografia multiespectral per a immobiliària, cinema, indústria, vegetació i costa.",
+      "Filmació aèria, inspeccions i cartografia per a immobiliària, cinema i indústria.",
     seoText:
       "Skyflick Studio ofereix serveis professionals de dron a Mallorca i les Illes Balears: filmació aèria, vídeo immobiliari, inspeccions tècniques i mapes multiespectrals.",
     servicesEyebrow: "ELS NOSTRES SERVEIS",
@@ -175,11 +179,11 @@ const COPY: Record<Lang, Copy> = {
     errorTitle: "Hi ha hagut un problema",
     errorText: "Torna-ho a provar o escriu-nos per WhatsApp.",
   },
-    es: {
+  es: {
     navContact: "Contacto",
-    heroTitle: "Servicios de dron en Mallorca e Islas Baleares",
+    heroTitle: "Servicios de dron en Mallorca",
     heroText:
-      "Filmación aérea, inspección técnica y cartografía multiespectral para inmobiliaria, cine, industria, vegetación y costa.",
+      "Filmación aérea, inspecciones y cartografía para inmobiliaria, cine e industria.",
     seoText:
       "Skyflick Studio ofrece servicios profesionales de dron en Mallorca y las Islas Baleares: filmación aérea, vídeo inmobiliario, inspecciones técnicas y mapas multiespectrales.",
     servicesEyebrow: "SERVICIOS",
@@ -232,11 +236,11 @@ const COPY: Record<Lang, Copy> = {
     errorTitle: "Ha ocurrido un error",
     errorText: "Inténtalo de nuevo o contáctanos por WhatsApp.",
   },
-    de: {
+  de: {
     navContact: "Kontakt",
-    heroTitle: "Drohnenservices auf Mallorca & Balearen",
+    heroTitle: "Drohnenservices auf Mallorca",
     heroText:
-      "Luftaufnahmen, technische Inspektion und multispektrales Mapping für Immobilien, Film, Industrie, Vegetation und Küstenbereiche.",
+      "Luftaufnahmen, Inspektionen und Mapping für Immobilien, Film und Industrie.",
     seoText:
       "Skyflick Studio bietet professionelle Drohnendienstleistungen auf Mallorca und den Balearen: Luftaufnahmen, Immobilienvideos, technische Inspektionen und multispektrale Karten.",
     servicesEyebrow: "DIENSTLEISTUNGEN",
@@ -290,6 +294,62 @@ const COPY: Record<Lang, Copy> = {
     errorText: "Bitte erneut versuchen.",
   },
 };
+function WhatsAppIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M21 12a9 9 0 1 1-16.5 5.2L3 21l3.9-1.4A9 9 0 1 1 21 12Z"
+        stroke="currentColor"
+        strokeWidth="1.45"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M8.5 8.9c.25-.55.55-.65.92-.65h.68c.25 0 .52.04.72.52.2.48.68 1.68.74 1.8.08.18.12.36.02.58-.1.2-.16.3-.32.48-.16.16-.34.36-.48.48-.16.16-.32.32-.14.64.18.3.8 1.32 1.72 2.14 1.18 1.04 2.18 1.38 2.5 1.54.32.16.52.14.72-.08.22-.24.84-.98 1.06-1.32.22-.34.44-.28.74-.18.3.1 1.88.88 2.2 1.04.32.16.54.24.62.38.08.14.08.82-.2 1.6-.28.78-1.62 1.5-2.24 1.58-.58.08-1.34.12-2.16-.14-.5-.16-1.16-.38-2-.74-3.52-1.52-5.82-5.04-6-5.28-.18-.24-1.44-1.92-1.44-3.66 0-1.74.9-2.6 1.22-2.94Z"
+        stroke="currentColor"
+        strokeWidth="1.25"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function LocationIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 21s-6-5.686-6-10a6 6 0 1 1 12 0c0 4.314-6 10-6 10z" stroke="currentColor" strokeWidth="1.4" />
+      <circle cx="12" cy="11" r="2.5" stroke="currentColor" strokeWidth="1.4" />
+    </svg>
+  );
+}
+
+function PhoneIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3.09 5.18 2 2 0 0 1 5.11 3h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.62a2 2 0 0 1-.45 2.11L9 10a16 16 0 0 0 5 5l.55-1.28a2 2 0 0 1 2.11-.45c.84.29 1.72.5 2.62.62A2 2 0 0 1 22 16.92z" stroke="currentColor" strokeWidth="1.4" />
+    </svg>
+  );
+}
+function MailIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M4 6h16v12H4z" stroke="currentColor" strokeWidth="1.4" />
+      <path d="M4 6l8 7 8-7" stroke="currentColor" strokeWidth="1.4" />
+    </svg>
+  );
+}
+
+function InstagramIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.4" />
+      <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
+    </svg>
+  );
+}
+
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -320,7 +380,6 @@ function langButtonStyle(active: boolean): React.CSSProperties {
     gap: "8px",
   };
 }
-
 function cardStyle(): React.CSSProperties {
   return {
     background: "#07131a",
@@ -353,6 +412,22 @@ function LangFlag({ code }: { code: Lang }) {
   if (code === "ca") return <FlagCatalonia />;
   if (code === "es") return <span style={{ fontSize: 14 }}>🇪🇸</span>;
   return <span style={{ fontSize: 14 }}>🇩🇪</span>;
+}
+
+function cleanContactText(text: string) {
+  return text
+    .replace("Area: ", "")
+    .replace("Zona: ", "")
+    .replace("Gebiet: ", "")
+    .replace("Phone: ", "")
+    .replace("Teléfono: ", "")
+    .replace("Telèfon: ", "")
+    .replace("Telefon: ", "")
+    .replace("Email: ", "")
+    .replace("Correo: ", "")
+    .replace("Correu: ", "")
+    .replace("E-Mail: ", "")
+    .replace("Instagram: ", "");
 }
 export default function App() {
   const [lang, setLang] = useState<Lang>("en");
@@ -476,9 +551,6 @@ export default function App() {
         }
         .fade-up { animation: fadeUp 700ms ease both; }
         .fade-up-delay { animation: fadeUp 950ms ease both; }
-        .card-hover {
-          transition: transform 220ms ease, box-shadow 220ms ease, filter 220ms ease;
-        }
         .card-hover:hover {
           transform: translateY(-6px);
           box-shadow: 0 18px 40px rgba(0,0,0,0.28);
@@ -493,13 +565,16 @@ export default function App() {
           border-color: rgba(255,255,255,0.85);
           box-shadow: 0 0 18px rgba(213,186,114,0.18);
         }
-        .link-polish { transition: opacity 180ms ease; }
+                .link-polish { transition: opacity 180ms ease; }
         .link-polish:hover { opacity: 0.82; }
         .floating-whatsapp {
           position: fixed;
           right: 18px;
           bottom: 18px;
           z-index: 50;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
           text-decoration: none;
           color: white;
           background: #0b1418;
@@ -519,12 +594,9 @@ export default function App() {
           to { opacity: 1; transform: translateY(0); }
         }
       `}</style>
-            <a
-        className="floating-whatsapp"
-        href={WHATSAPP_URL}
-        target="_blank"
-        rel="noreferrer"
-      >
+
+      <a className="floating-whatsapp" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+        <WhatsAppIcon size={17} />
         {c.floatingWhatsapp}
       </a>
 
@@ -537,7 +609,7 @@ export default function App() {
               "linear-gradient(90deg, rgba(2,7,10,0.88) 0%, rgba(2,7,10,0.62) 36%, rgba(2,7,10,0.22) 62%), url('https://images.pexels.com/photos/36532574/pexels-photo-36532574.jpeg') center/cover no-repeat",
           }}
         >
-          <div
+                    <div
             style={{
               maxWidth: "1520px",
               margin: "0 auto",
@@ -582,9 +654,6 @@ export default function App() {
               <p style={{ fontSize: isMobile ? "18px" : "22px", lineHeight: 1.55, color: "rgba(255,255,255,0.86)", maxWidth: "760px", marginTop: "20px" }}>
                 {c.heroText}
               </p>
-              <p style={{ fontSize: "13px", lineHeight: 1.6, color: "rgba(255,255,255,0.48)", maxWidth: "760px", marginTop: "14px" }}>
-                {c.seoText}
-              </p>
             </div>
           </div>
         </section>
@@ -607,293 +676,246 @@ export default function App() {
                     }}
                   />
                   <div style={{ padding: isMobile ? "20px" : "26px 22px 24px 22px" }}>
-                    <h3 style={{ fontSize: isMobile ? "22px" : "24px", fontWeight: 500, margin: "0 0 12px 0", letterSpacing: "-0.03em" }}>
-                      {card.title}
-                    </h3>
-                    <p style={{ color: "rgba(255,255,255,0.84)", fontSize: isMobile ? "16px" : "17px", lineHeight: 1.62, margin: 0 }}>
-                      {card.text}
-                    </p>
-                    <div style={{ marginTop: "18px", color: "#d5ba72", fontSize: isMobile ? "12px" : "14px", letterSpacing: "0.12em" }}>
-                      {card.footer}
-                    </div>
+                    <h3 style={{ fontSize: isMobile ? "22px" : "24px", fontWeight: 500, margin: "0 0 12px 0", letterSpacing: "-0.03em" }}>{card.title}</h3>
+                    <p style={{ color: "rgba(255,255,255,0.84)", fontSize: isMobile ? "16px" : "17px", lineHeight: 1.62, margin: 0 }}>{card.text}</p>
+                    <div style={{ marginTop: "18px", color: "#d5ba72", fontSize: isMobile ? "12px" : "14px", letterSpacing: "0.12em" }}>{card.footer}</div>
                   </div>
                 </div>
               ))}
             </div>
 
             <div style={{ marginTop: isMobile ? "30px" : "42px" }}>
-              <div style={{ color: "#d8d0b0", fontSize: isMobile ? "13px" : "15px", letterSpacing: "0.2em", marginBottom: "18px" }}>
-                {c.statsEyebrow}
-              </div>
-
+              <div style={{ color: "#d8d0b0", fontSize: isMobile ? "13px" : "15px", letterSpacing: "0.2em", marginBottom: "18px" }}>{c.statsEyebrow}</div>
               <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(4, 1fr)", gap: isMobile ? "18px" : "36px" }}>
                 {stats.map((item) => (
                   <div key={item.title}>
-                    <div style={{ color: "#f0d38c", fontSize: isMobile ? "13px" : "15px", letterSpacing: "0.08em", marginBottom: "10px" }}>
-                      {item.title}
-                    </div>
-                    <div style={{ color: "rgba(255,255,255,0.72)", fontSize: isMobile ? "15px" : "16px", lineHeight: 1.55 }}>
-                      {item.text}
-                    </div>
+                    <div style={{ color: "#f0d38c", fontSize: isMobile ? "13px" : "15px", letterSpacing: "0.08em", marginBottom: "10px" }}>{item.title}</div>
+                    <div style={{ color: "rgba(255,255,255,0.72)", fontSize: isMobile ? "15px" : "16px", lineHeight: 1.55 }}>{item.text}</div>
                   </div>
                 ))}
               </div>
             </div>
+
+            <p style={{ fontSize: "13px", lineHeight: 1.7, color: "rgba(255,255,255,0.44)", maxWidth: "860px", marginTop: "34px" }}>
+              {c.seoText}
+            </p>
           </div>
         </section>
-                <section
-          id="contacte"
-          style={{
-            minHeight: isMobile ? "auto" : "560px",
-            background:
-              "linear-gradient(90deg, rgba(3,12,16,0.84) 0%, rgba(3,12,16,0.5) 35%, rgba(3,12,16,0.12) 62%), url('https://images.pexels.com/photos/1173777/pexels-photo-1173777.jpeg?auto=compress&cs=tinysrgb&w=1800') center/cover no-repeat",
-            padding: isMobile ? "44px 0" : "70px 0",
-          }}
-        >
-          <div
-            style={{
-              maxWidth: "1520px",
-              margin: "0 auto",
-              padding: isMobile ? "0 20px" : "0 54px",
-              display: "grid",
-              gridTemplateColumns: isMobile ? "1fr" : "1.05fr 0.95fr",
-              gap: isMobile ? "24px" : "40px",
-              alignItems: "start",
-            }}
-          >
-            <div>
-              <div style={{ color: "#d5ba72", fontSize: isMobile ? "13px" : "14px", letterSpacing: "0.18em", marginBottom: "16px" }}>
-                {c.contactEyebrow}
-              </div>
-
-              <h2 style={{ fontSize: isMobile ? "34px" : "58px", lineHeight: 1.08, fontWeight: 500, letterSpacing: "-0.05em", maxWidth: "720px", margin: 0 }}>
-                {c.contactTitle}
-              </h2>
-
-              <p style={{ color: "rgba(255,255,255,0.78)", fontSize: isMobile ? "17px" : "18px", lineHeight: 1.7, maxWidth: "740px", marginTop: "20px" }}>
-                {c.contactText}
-              </p>
-
-              {formStatus === "success" && (
-                <div style={{ marginTop: "22px", background: "rgba(15, 50, 36, 0.72)", border: "1px solid rgba(99, 179, 132, 0.35)", borderRadius: "12px", padding: "16px 18px", maxWidth: "560px" }}>
-                  <div style={{ color: "#c6f6d5", fontWeight: 600, marginBottom: 6 }}>{c.successTitle}</div>
-                  <div style={{ color: "rgba(255,255,255,0.82)", lineHeight: 1.6 }}>{c.successText}</div>
-                </div>
-              )}
-
-              {formStatus === "error" && (
-                <div style={{ marginTop: "22px", background: "rgba(74, 20, 20, 0.72)", border: "1px solid rgba(245, 101, 101, 0.28)", borderRadius: "12px", padding: "16px 18px", maxWidth: "560px" }}>
-                  <div style={{ color: "#feb2b2", fontWeight: 600, marginBottom: 6 }}>{c.errorTitle}</div>
-                  <div style={{ color: "rgba(255,255,255,0.82)", lineHeight: 1.6 }}>{c.errorText}</div>
-                </div>
-              )}
-            </div>
-                        <div
-              style={{
-                background: "rgba(4,10,13,0.76)",
-                border: "1px solid rgba(255,255,255,0.08)",
-                borderRadius: "16px",
-                padding: isMobile ? "18px" : "24px",
-                backdropFilter: "blur(6px)",
-              }}
-            >
-              <div style={{ color: "#d5ba72", fontSize: isMobile ? "13px" : "14px", letterSpacing: "0.18em", marginBottom: "14px" }}>
-                {c.formTitle}
-              </div>
-
-              <form onSubmit={handleSubmit} style={{ display: "grid", gap: "12px" }}>
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder={c.namePlaceholder}
-                  style={{
-                    width: "100%",
-                    background: "rgba(255,255,255,0.04)",
-                    border: "1px solid rgba(255,255,255,0.12)",
-                    color: "#fff",
-                    borderRadius: "10px",
-                    padding: "14px 16px",
-                    fontSize: "16px",
-                  }}
-                />
-
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder={c.emailPlaceholder}
-                  style={{
-                    width: "100%",
-                    background: "rgba(255,255,255,0.04)",
-                    border: "1px solid rgba(255,255,255,0.12)",
-                    color: "#fff",
-                    borderRadius: "10px",
-                    padding: "14px 16px",
-                    fontSize: "16px",
-                  }}
-                />
-
-                <textarea
-                  name="message"
-                  required
-                  rows={5}
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  placeholder={c.messagePlaceholder}
-                  style={{
-                    width: "100%",
-                    background: "rgba(255,255,255,0.04)",
-                    border: "1px solid rgba(255,255,255,0.12)",
-                    color: "#fff",
-                    borderRadius: "10px",
-                    padding: "14px 16px",
-                    fontSize: "16px",
-                    resize: "vertical",
-                    fontFamily: "Inter, sans-serif",
-                  }}
-                />
-                                <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", marginTop: "4px" }}>
-                  <button
-                    type="submit"
-                    className="button-polish"
-                    disabled={formStatus === "submitting"}
-                    style={{
-                      display: "inline-block",
-                      color: "#fff",
-                      background: "transparent",
-                      border: "1px solid rgba(255,255,255,0.5)",
-                      padding: isMobile ? "14px 18px" : "16px 26px",
-                      borderRadius: "10px",
-                      fontSize: isMobile ? "17px" : "18px",
-                      textAlign: "center",
-                      cursor: formStatus === "submitting" ? "default" : "pointer",
-                      opacity: formStatus === "submitting" ? 0.7 : 1,
-                    }}
-                  >
-                    {formStatus === "submitting" ? c.submittingButton : c.submitButton}
-                  </button>
-
-                  <a
-                    className="button-polish"
-                    href={WHATSAPP_URL}
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{
-                      display: "inline-block",
-                      color: "#fff",
-                      textDecoration: "none",
-                      border: "1px solid rgba(255,255,255,0.5)",
-                      padding: isMobile ? "14px 18px" : "16px 26px",
-                      borderRadius: "10px",
-                      fontSize: isMobile ? "17px" : "18px",
-                      textAlign: "center",
-                    }}
-                  >
-                    {c.whatsappButton}
-                  </a>
-                </div>
-              </form>
-
-              <div style={{ marginTop: "22px", paddingTop: "18px", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-                <div style={{ color: "rgba(255,255,255,0.62)", fontSize: isMobile ? "13px" : "14px", letterSpacing: "0.18em", marginBottom: "12px" }}>
-                  {c.sectorsEyebrow}
-                </div>
-
-                <div style={{ color: "rgba(255,255,255,0.72)", fontSize: isMobile ? "14px" : "16px", lineHeight: 1.8, letterSpacing: "0.03em" }}>
-                  {sectorsLine}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-                <footer
-          style={{
-            background: "#02080b",
-            padding: isMobile ? "32px 0" : "40px 0",
-            borderTop: "1px solid rgba(255,255,255,0.08)",
-          }}
-        >
-          <div
-            style={{
-              maxWidth: "1520px",
-              margin: "0 auto",
-              padding: isMobile ? "0 20px" : "0 54px",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: isMobile ? "flex-start" : "end",
-              gap: "30px",
-              flexWrap: "wrap",
-              flexDirection: isMobile ? "column" : "row",
-            }}
-          >
-            <div>
-              <div style={{ color: "#d5ba72", fontSize: isMobile ? "12px" : "13px", letterSpacing: "0.25em", marginBottom: "18px", fontWeight: 500 }}>
-                {c.footerEyebrow}
-              </div>
-
-              <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-                <div style={{ fontFamily: "'JetBrains Mono', monospace", color: "#e5e7eb", fontSize: isMobile ? "15px" : "17px", letterSpacing: "0.03em" }}>
-                  {c.zone}
-                </div>
-
-                <div style={{ fontFamily: "'JetBrains Mono', monospace", color: "#e5e7eb", fontSize: isMobile ? "15px" : "17px", letterSpacing: "0.03em" }}>
-                  {c.phone}
-                </div>
-
-                <a
-                  href="mailto:skyflickesp@gmail.com?subject=Drone%20Project%20Mallorca"
-                  className="link-polish"
-                  style={{ fontFamily: "'JetBrains Mono', monospace", color: "#e5e7eb", fontSize: isMobile ? "15px" : "17px", textDecoration: "none", letterSpacing: "0.03em" }}
-                >
-                  {c.email}
-                </a>
-
-                <a
-                  className="link-polish"
-                  href={INSTAGRAM_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  style={{
-                    fontFamily: "'JetBrains Mono', monospace",
-                    color: "#e5e7eb",
-                    fontSize: isMobile ? "15px" : "17px",
-                    textDecoration: "none",
-                    letterSpacing: "0.03em",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "8px",
-                  }}
-                >
-                  <span style={{ fontSize: "18px" }}>📷</span>
-                  {c.instagram}
-                </a>
-
-                <div style={{ fontSize: "12px", opacity: 0.4, marginTop: "8px" }}>
-                  Drone services Mallorca · Aerial filming · Drone inspection · Balearic Islands
-                </div>
-              </div>
-            </div>
-                        <div style={{ textAlign: isMobile ? "left" : "right" }}>
-              <div style={{ fontSize: isMobile ? "48px" : "86px", lineHeight: 0.9, fontWeight: 800, letterSpacing: "-0.06em", color: "rgba(255,255,255,0.12)" }}>
-                Skyflick
-              </div>
-
-              <div style={{ fontSize: isMobile ? "13px" : "18px", letterSpacing: isMobile ? "0.28em" : "0.42em", color: "rgba(255,255,255,0.2)", marginTop: "10px" }}>
-                STUDIO
-              </div>
-
-              <div style={{ marginTop: "18px", color: "rgba(255,255,255,0.4)", fontSize: isMobile ? "14px" : "16px" }}>
-                © 2024 Skyflick Studio
-              </div>
-            </div>
-          </div>
-        </footer>
+        <section
+  id="contacte"
+  style={{
+    minHeight: isMobile ? "auto" : "560px",
+    background:
+      "linear-gradient(90deg, rgba(3,12,16,0.84) 0%, rgba(3,12,16,0.5) 35%, rgba(3,12,16,0.12) 62%), url('https://images.pexels.com/photos/1173777/pexels-photo-1173777.jpeg?auto=compress&cs=tinysrgb&w=1800') center/cover no-repeat",
+    padding: isMobile ? "44px 0" : "70px 0",
+  }}
+>
+  <div
+    style={{
+      maxWidth: "1520px",
+      margin: "0 auto",
+      padding: isMobile ? "0 20px" : "0 54px",
+      display: "grid",
+      gridTemplateColumns: isMobile ? "1fr" : "1.05fr 0.95fr",
+      gap: isMobile ? "24px" : "40px",
+      alignItems: "start",
+    }}
+  >
+    <div>
+      <div
+        style={{
+          color: "#d5ba72",
+          fontSize: isMobile ? "13px" : "14px",
+          letterSpacing: "0.18em",
+          marginBottom: "16px",
+        }}
+      >
+        {c.contactEyebrow}
       </div>
-    </>
-  );
-}
+
+      <h2
+        style={{
+          fontSize: isMobile ? "34px" : "58px",
+          lineHeight: 1.08,
+          fontWeight: 500,
+          letterSpacing: "-0.05em",
+          maxWidth: "720px",
+          margin: 0,
+        }}
+      >
+        {c.contactTitle}
+      </h2>
+
+      <p
+        style={{
+          color: "rgba(255,255,255,0.78)",
+          fontSize: isMobile ? "17px" : "18px",
+          lineHeight: 1.7,
+          maxWidth: "740px",
+          marginTop: "20px",
+        }}
+      >
+        {c.contactText}
+      </p>
+    </div>
+
+    <div
+      style={{
+        background: "rgba(4,10,13,0.76)",
+        border: "1px solid rgba(255,255,255,0.08)",
+        borderRadius: "16px",
+        padding: isMobile ? "18px" : "24px",
+        backdropFilter: "blur(6px)",
+      }}
+    >
+      <div
+        style={{
+          color: "#d5ba72",
+          fontSize: isMobile ? "13px" : "14px",
+          letterSpacing: "0.18em",
+          marginBottom: "14px",
+        }}
+      >
+        {c.formTitle}
+      </div>
+
+      <form onSubmit={handleSubmit} style={{ display: "grid", gap: "12px" }}>
+        <input
+          type="text"
+          required
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder={c.namePlaceholder}
+          style={{
+            width: "100%",
+            background: "rgba(255,255,255,0.04)",
+            border: "1px solid rgba(255,255,255,0.12)",
+            color: "#fff",
+            borderRadius: "10px",
+            padding: "14px 16px",
+          }}
+        />
+
+        <input
+          type="email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder={c.emailPlaceholder}
+          style={{
+            width: "100%",
+            background: "rgba(255,255,255,0.04)",
+            border: "1px solid rgba(255,255,255,0.12)",
+            color: "#fff",
+            borderRadius: "10px",
+            padding: "14px 16px",
+          }}
+        />
+
+        <textarea
+          required
+          rows={5}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          placeholder={c.messagePlaceholder}
+          style={{
+            width: "100%",
+            background: "rgba(255,255,255,0.04)",
+            border: "1px solid rgba(255,255,255,0.12)",
+            color: "#fff",
+            borderRadius: "10px",
+            padding: "14px 16px",
+          }}
+        />
+                <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+          <button
+            type="submit"
+            disabled={formStatus === "submitting"}
+            style={{
+              color: "#fff",
+              background: "transparent",
+              border: "1px solid rgba(255,255,255,0.5)",
+              padding: "14px 20px",
+              borderRadius: "10px",
+              cursor: "pointer",
+            }}
+          >
+            {formStatus === "submitting"
+              ? c.submittingButton
+              : c.submitButton}
+          </button>
+
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noreferrer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "10px",
+              color: "#fff",
+              textDecoration: "none",
+              border: "1px solid rgba(255,255,255,0.5)",
+              padding: "14px 20px",
+              borderRadius: "10px",
+            }}
+          >
+            <WhatsAppIcon />
+            {c.whatsappButton}
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer
+  style={{
+    background: "#02080b",
+    padding: "40px 0",
+    borderTop: "1px solid rgba(255,255,255,0.08)",
+  }}
+>
+  <div
+    style={{
+      maxWidth: "1520px",
+      margin: "0 auto",
+      padding: "0 54px",
+      display: "flex",
+      justifyContent: "space-between",
+      flexWrap: "wrap",
+      gap: "30px",
+    }}
+  >
+    <div>
+      <div style={{ color: "#d5ba72", marginBottom: "16px" }}>
+        {c.footerEyebrow}
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+        <div style={{ display: "flex", gap: "10px" }}>
+          <LocationIcon /> {cleanContactText(c.zone)}
+        </div>
+
+        <div style={{ display: "flex", gap: "10px" }}>
+          <PhoneIcon />
+          <a href="tel:+34634562634">{cleanContactText(c.phone)}</a>
+        </div>
+
+        <div style={{ display: "flex", gap: "10px" }}>
+          <MailIcon />
+          <a href="mailto:skyflickesp@gmail.com">
+            {cleanContactText(c.email)}
+          </a>
+        </div>
+
+        <div style={{ display: "flex", gap: "10px" }}>
+          <InstagramIcon />
+          <a href={INSTAGRAM_URL} target="_blank">
+            @skyflickstudio
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
