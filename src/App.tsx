@@ -895,21 +895,23 @@ export default function App() {
 
         <div style={{ display: "flex", gap: "10px" }}>
           <PhoneIcon />
-          <a href="tel:+34634562634">{cleanContactText(c.phone)}</a>
+          <a href="tel:+34634562634" className="footer-link">
+  {cleanContactText(c.phone)}
+</a>
         </div>
 
         <div style={{ display: "flex", gap: "10px" }}>
           <MailIcon />
           <a href="mailto:skyflickesp@gmail.com">
-            {cleanContactText(c.email)}
-          </a>
+  {cleanContactText(c.email)}
+</a>
         </div>
 
         <div style={{ display: "flex", gap: "10px" }}>
           <InstagramIcon />
-          <a href={INSTAGRAM_URL} target="_blank">
-            @skyflickstudio
-          </a>
+          <a href={INSTAGRAM_URL} target="_blank" className="footer-link">
+  @skyflickstudio
+</a>
         </div>
       </div>
     </div>
