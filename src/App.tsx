@@ -60,68 +60,6 @@ type Copy = {
   errorTitle: string;
   errorText: string;
 };
-import React, { useEffect, useMemo, useState } from "react";
-
-type Lang = "en" | "ca" | "es" | "de";
-type FormStatus = "idle" | "submitting" | "success" | "error";
-
-const WHATSAPP_URL =
-  "https://wa.me/34634562634?text=Hi%20Skyflick%20Studio,%20I%20need%20information%20about%20a%20drone%20project%20in%20Mallorca.";
-
-const INSTAGRAM_URL = "https://www.instagram.com/skyflickstudio";
-const FORMSPREE_URL = "https://formspree.io/f/xjgjjgqr";
-
-type Copy = {
-  navContact: string;
-  heroTitle: string;
-  heroText: string;
-  seoText: string;
-  servicesEyebrow: string;
-  service1Title: string;
-  service1Text: string;
-  service1Footer: string;
-  service2Title: string;
-  service2Text: string;
-  service2Footer: string;
-  service3Title: string;
-  service3Text: string;
-  service3Footer: string;
-  statsEyebrow: string;
-  stat1Title: string;
-  stat1Text: string;
-  stat2Title: string;
-  stat2Text: string;
-  stat3Title: string;
-  stat3Text: string;
-  stat4Title: string;
-  stat4Text: string;
-  contactEyebrow: string;
-  contactTitle: string;
-  contactText: string;
-  formTitle: string;
-  namePlaceholder: string;
-  emailPlaceholder: string;
-  messagePlaceholder: string;
-  submitButton: string;
-  submittingButton: string;
-  whatsappButton: string;
-  sectorsEyebrow: string;
-  sector1: string;
-  sector2: string;
-  sector3: string;
-  sector4: string;
-  sector5: string;
-  footerEyebrow: string;
-  zone: string;
-  phone: string;
-  email: string;
-  instagram: string;
-  floatingWhatsapp: string;
-  successTitle: string;
-  successText: string;
-  errorTitle: string;
-  errorText: string;
-};
   ca: {
     navContact: "Contacte",
     heroTitle: "Serveis de dron a Mallorca",
