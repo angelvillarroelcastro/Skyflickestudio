@@ -60,7 +60,65 @@ type Copy = {
   errorTitle: string;
   errorText: string;
 };
-  ca: {
+const COPY: Record<Lang, Copy> = {
+  en: {
+    navContact: "Contact",
+    heroTitle: "Drone Services in Mallorca",
+    heroText:
+      "Aerial filming, inspections and mapping for real estate, film and industry.",
+    seoText:
+      "Skyflick Studio provides professional drone services in Mallorca and the Balearic Islands, including aerial filming, real estate drone video, technical inspections and multispectral mapping.",
+    servicesEyebrow: "SERVICES",
+    service1Title: "Drone Filming in Mallorca",
+    service1Text:
+      "4K aerial video and photography for film, advertising, villas, hotels and premium real estate projects.",
+    service1Footer: "FILM · ADVERTISING · VILLAS · HOTELS",
+    service2Title: "Drone Inspection Services",
+    service2Text:
+      "Visual review of buildings, roofs, structures and industrial areas to detect issues quickly and safely.",
+    service2Footer: "INDUSTRY · INFRASTRUCTURE · BUILDINGS",
+    service3Title: "Multispectral Drone Mapping",
+    service3Text:
+      "Vegetation, coastline and technical surface analysis with advanced sensors and specialized capture.",
+    service3Footer: "VEGETATION · COASTLINE · ANALYSIS",
+    statsEyebrow: "KEY POINTS",
+    stat1Title: "SAFE FLIGHTS",
+    stat1Text: "Certified operations and compliance.",
+    stat2Title: "4K QUALITY",
+    stat2Text: "High-resolution capture for professional results.",
+    stat3Title: "PRECISE DATA",
+    stat3Text: "Advanced technology for reliable visual analysis.",
+    stat4Title: "FAST DELIVERY",
+    stat4Text: "Efficient processing tailored to each project.",
+    contactEyebrow: "CONTACT",
+    contactTitle: "Let’s talk about your project",
+    contactText:
+      "Tell us what you need and we will help define the best aerial solution for your project in Mallorca or the Balearic Islands.",
+    formTitle: "Write to us directly",
+    namePlaceholder: "Name",
+    emailPlaceholder: "Email",
+    messagePlaceholder: "Tell us about your project",
+    submitButton: "Send message",
+    submittingButton: "Sending...",
+    whatsappButton: "Chat on WhatsApp",
+    sectorsEyebrow: "AREAS / SECTORS",
+    sector1: "Film and advertising",
+    sector2: "Architecture and real estate",
+    sector3: "Industry and infrastructure",
+    sector4: "Environment and territory",
+    sector5: "Sport and vegetation",
+    footerEyebrow: "CONTACT",
+    zone: "Area: Mallorca · Balearic Islands · Spain",
+    phone: "Phone: +34 634 562 634",
+    email: "Email: skyflickesp@gmail.com",
+    instagram: "Instagram: @skyflickstudio",
+    floatingWhatsapp: "WhatsApp",
+    successTitle: "Message sent",
+    successText: "Thank you. We’ll get back to you as soon as possible.",
+    errorTitle: "Something went wrong",
+    errorText: "Please try again or contact us via WhatsApp.",
+  },
+    ca: {
     navContact: "Contacte",
     heroTitle: "Serveis de dron a Mallorca",
     heroText:
@@ -117,7 +175,7 @@ type Copy = {
     errorTitle: "Hi ha hagut un problema",
     errorText: "Torna-ho a provar o escriu-nos per WhatsApp.",
   },
-  es: {
+    es: {
     navContact: "Contacto",
     heroTitle: "Servicios de dron en Mallorca",
     heroText:
@@ -174,7 +232,7 @@ type Copy = {
     errorTitle: "Ha ocurrido un error",
     errorText: "Inténtalo de nuevo o contáctanos por WhatsApp.",
   },
-  de: {
+    de: {
     navContact: "Kontakt",
     heroTitle: "Drohnenservices auf Mallorca",
     heroText:
