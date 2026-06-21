@@ -757,15 +757,13 @@ export default function App() {
               transition: "padding 260ms ease",
             }}
           >
-            <div>
-              <div style={{ fontSize: isMobile ? (scrolled ? "30px" : "52px") : (scrolled ? "34px" : "88px"), lineHeight: 0.9, fontWeight: 800, letterSpacing: "-0.06em", transition: "font-size 260ms ease" }}>
+            <div style={{ display: "flex", alignItems: "baseline", gap: isMobile ? "8px" : "12px" }}>
+              <div style={{ fontSize: isMobile ? "28px" : (scrolled ? "28px" : "38px"), lineHeight: 1, fontWeight: 800, letterSpacing: "-0.04em", transition: "font-size 260ms ease" }}>
                 Skyflick
               </div>
-              {!scrolled && (
-                <div style={{ fontSize: isMobile ? "14px" : "22px", letterSpacing: isMobile ? "0.28em" : "0.42em", marginTop: "10px", marginLeft: isMobile ? "68px" : "150px", opacity: 0.94 }}>
-                  STUDIO
-                </div>
-              )}
+              <div style={{ fontSize: isMobile ? "11px" : "13px", letterSpacing: "0.3em", opacity: 0.85, paddingBottom: "2px" }}>
+                STUDIO
+              </div>
             </div>
 
             <div style={{ display: "flex", alignItems: isMobile ? "flex-start" : "center", gap: isMobile ? "18px" : "28px", flexDirection: isMobile ? "column" : "row", width: isMobile ? "100%" : "auto" }}>
