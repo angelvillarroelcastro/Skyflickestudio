@@ -447,25 +447,28 @@ export default function App() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // SEO dinámico por idioma (las fuentes ya van en index.html, sin inyección JS).
   useEffect(() => {
-    const inter = document.createElement("link");
-    inter.href =
-      "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap";
-    inter.rel = "stylesheet";
-    document.head.appendChild(inter);
-
-    const mono = document.createElement("link");
-    mono.href =
-      "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap";
-    mono.rel = "stylesheet";
-    document.head.appendChild(mono);
-
+    const cc = COPY[lang];
     document.documentElement.lang = lang;
-
-    return () => {
-      if (document.head.contains(inter)) document.head.removeChild(inter);
-      if (document.head.contains(mono)) document.head.removeChild(mono);
+    const title = `${cc.heroTitle} | Skyflick Studio`;
+    document.title = title;
+    const setMeta = (key: string, attr: "name" | "property", value: string) => {
+      let el = document.head.querySelector(
+        `meta[${attr}="${key}"]`
+      ) as HTMLMetaElement | null;
+      if (!el) {
+        el = document.createElement("meta");
+        el.setAttribute(attr, key);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("content", value);
     };
+    setMeta("description", "name", cc.seoText);
+    setMeta("og:title", "property", title);
+    setMeta("og:description", "property", cc.seoText);
+    setMeta("twitter:title", "name", title);
+    setMeta("twitter:description", "name", cc.seoText);
   }, [lang]);
 
   const services = useMemo(
@@ -657,8 +660,8 @@ export default function App() {
 
         /* Tarjetas: aro dorado al pasar + zoom de imagen */
         .card-hover { border: 1px solid rgba(255,255,255,0.07); }
-        .card-hover [role="img"] { transition: transform 600ms cubic-bezier(.2,.7,.2,1); }
-        .card-hover:hover [role="img"] { transform: scale(1.07); }
+        .card-hover [role="img"], .card-hover img { transition: transform 600ms cubic-bezier(.2,.7,.2,1); }
+        .card-hover:hover [role="img"], .card-hover:hover img { transform: scale(1.07); }
         .card-hover:hover {
           transform: translateY(-8px);
           box-shadow: 0 26px 60px rgba(0,0,0,0.42), 0 0 0 1px rgba(213,186,114,0.32);
@@ -768,7 +771,7 @@ export default function App() {
             <div style={{ display: "flex", alignItems: isMobile ? "flex-start" : "center", gap: isMobile ? "18px" : "28px", flexDirection: isMobile ? "column" : "row", width: isMobile ? "100%" : "auto" }}>
               <div style={{ display: "flex", gap: isMobile ? "16px" : "22px", flexWrap: "wrap" }}>
                 {(["en", "ca", "es", "de"] as Lang[]).map((code) => (
-                  <button key={code} onClick={() => setLang(code)} style={langButtonStyle(lang === code)}>
+                  <button key={code} onClick={() => setLang(code)} aria-pressed={lang === code} aria-label={`Idioma ${code.toUpperCase()}`} style={langButtonStyle(lang === code)}>
                     <LangFlag code={code} />
                     {code.toUpperCase()}
                   </button>
@@ -823,12 +826,16 @@ export default function App() {
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr", gap: isMobile ? "18px" : "28px" }}>
               {services.map((card) => (
                 <div key={card.title} className="card-hover fade-up-delay" style={cardStyle()}>
-                  <div
-                    role="img"
-                    aria-label={`${card.title} Mallorca drone services`}
+                  <img
+                    src={card.image}
+                    alt={`${card.title} — Skyflick Studio, drone services in Mallorca`}
+                    loading="lazy"
+                    decoding="async"
                     style={{
+                      display: "block",
+                      width: "100%",
                       height: isMobile ? "220px" : "278px",
-                      background: `linear-gradient(rgba(0,0,0,0.16), rgba(0,0,0,0.24)), url('${card.image}') center/cover no-repeat`,
+                      objectFit: "cover",
                     }}
                   />
                   <div style={{ padding: isMobile ? "20px" : "26px 22px 24px 22px" }}>
@@ -985,6 +992,7 @@ export default function App() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder={c.namePlaceholder}
+                  aria-label={c.namePlaceholder}
                   style={{
                     width: "100%",
                     background: "rgba(255,255,255,0.04)",
@@ -1003,6 +1011,7 @@ export default function App() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={c.emailPlaceholder}
+                  aria-label={c.emailPlaceholder}
                   style={{
                     width: "100%",
                     background: "rgba(255,255,255,0.04)",
@@ -1021,6 +1030,7 @@ export default function App() {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder={c.messagePlaceholder}
+                  aria-label={c.messagePlaceholder}
                   style={{
                     width: "100%",
                     background: "rgba(255,255,255,0.04)",

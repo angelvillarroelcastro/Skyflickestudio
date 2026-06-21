@@ -48,11 +48,39 @@
     />
     <meta name="twitter:image" content="%PUBLIC_URL%/favicon2.png" />
 
-    <!-- FUENTES -->
+    <!-- CANONICAL -->
+    <link rel="canonical" href="https://www.skyflickstudio.com/" />
+
+    <!-- FUENTES (una sola vez, sin inyección por JS) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
+
+    <!-- DATOS ESTRUCTURADOS · SEO LOCAL -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Skyflick Studio",
+        "description": "Professional drone services in Mallorca and the Balearic Islands: aerial filming, drone inspections and drone mapping.",
+        "image": "https://www.skyflickstudio.com/favicon2.png",
+        "url": "https://www.skyflickstudio.com",
+        "telephone": "+34634562634",
+        "email": "skyflickesp@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressRegion": "Illes Balears",
+          "addressCountry": "ES"
+        },
+        "areaServed": ["Mallorca", "Balearic Islands", "Spain"],
+        "serviceType": ["Aerial filming", "Drone inspection", "Drone mapping"],
+        "knowsLanguage": ["en", "ca", "es", "de"],
+        "sameAs": ["https://www.instagram.com/skyflickstudio"]
+      }
+    </script>
   </head>
 
   <body>
