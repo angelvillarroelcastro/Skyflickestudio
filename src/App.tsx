@@ -620,6 +620,78 @@ export default function App() {
         }
       `}</style>
 
+      <style>{`
+        /* === Capa visual premium (no cambia contenido) === */
+        body {
+          background:
+            radial-gradient(1100px 600px at 82% -8%, rgba(213,186,114,0.10), transparent 60%),
+            radial-gradient(900px 520px at -8% 18%, rgba(56,128,255,0.07), transparent 55%),
+            #030607 !important;
+          -webkit-font-smoothing: antialiased;
+          text-rendering: optimizeLegibility;
+        }
+        ::selection { background: rgba(213,186,114,0.30); color: #fff; }
+        ::-webkit-scrollbar { width: 11px; }
+        ::-webkit-scrollbar-track { background: #03080b; }
+        ::-webkit-scrollbar-thumb { background: #16242c; border-radius: 8px; border: 2px solid #03080b; }
+        ::-webkit-scrollbar-thumb:hover { background: #21343e; }
+
+        input, textarea { transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease; }
+        input:hover, textarea:hover { border-color: rgba(255,255,255,0.22) !important; }
+        input:focus, textarea:focus { background: rgba(255,255,255,0.06) !important; }
+
+        /* Texto con degradado para titulares */
+        .gradient-text {
+          background: linear-gradient(100deg, #ffffff 0%, #f3e7c4 52%, #d5ba72 100%);
+          -webkit-background-clip: text; background-clip: text;
+          -webkit-text-fill-color: transparent; color: transparent;
+        }
+
+        /* Tarjetas: aro dorado al pasar + zoom de imagen */
+        .card-hover { border: 1px solid rgba(255,255,255,0.07); }
+        .card-hover [role="img"] { transition: transform 600ms cubic-bezier(.2,.7,.2,1); }
+        .card-hover:hover [role="img"] { transform: scale(1.07); }
+        .card-hover:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 26px 60px rgba(0,0,0,0.42), 0 0 0 1px rgba(213,186,114,0.32);
+          filter: brightness(1.04);
+        }
+
+        /* CTA principal en dorado relleno */
+        .cta-primary {
+          background: linear-gradient(100deg, #e7cf8a, #d5ba72) !important;
+          color: #0a0f12 !important;
+          border: 1px solid rgba(213,186,114,0.55) !important;
+          font-weight: 600;
+          box-shadow: 0 10px 28px rgba(213,186,114,0.22);
+        }
+        .cta-primary:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 16px 40px rgba(213,186,114,0.34) !important;
+          filter: brightness(1.05);
+          background: linear-gradient(100deg, #f0da97, #ddc47e) !important;
+        }
+
+        /* Botón flotante WhatsApp con identidad de marca */
+        .floating-whatsapp {
+          color: #062b1e !important;
+          background: linear-gradient(135deg, #37e08a, #1faf6a) !important;
+          border: 1px solid rgba(255,255,255,0.18) !important;
+          font-weight: 600;
+          box-shadow: 0 12px 30px rgba(31,175,106,0.35) !important;
+        }
+        .floating-whatsapp:hover {
+          transform: translateY(-2px) scale(1.03);
+          box-shadow: 0 18px 40px rgba(31,175,106,0.45) !important;
+          filter: brightness(1.04);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          *, *::before, *::after { animation: none !important; transition: none !important; }
+          html { scroll-behavior: auto; }
+        }
+      `}</style>
+
       <a className="floating-whatsapp" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
         <WhatsAppIcon size={17} />
         {c.floatingWhatsapp}
@@ -647,7 +719,7 @@ export default function App() {
             }}
           >
             <div>
-              <div style={{ fontSize: isMobile ? "52px" : "88px", lineHeight: 0.9, fontWeight: 800, letterSpacing: "-0.06em" }}>
+              <div className="gradient-text" style={{ fontSize: isMobile ? "52px" : "88px", lineHeight: 0.9, fontWeight: 800, letterSpacing: "-0.06em" }}>
                 Skyflick
               </div>
               <div style={{ fontSize: isMobile ? "14px" : "22px", letterSpacing: isMobile ? "0.28em" : "0.42em", marginTop: "10px", marginLeft: isMobile ? "68px" : "150px", opacity: 0.94 }}>
@@ -665,7 +737,7 @@ export default function App() {
                 ))}
               </div>
 
-              <a className="button-polish" href="#contacte" style={{ color: "#fff", textDecoration: "none", border: "1px solid rgba(255,255,255,0.55)", padding: isMobile ? "14px 20px" : "16px 28px", borderRadius: "12px", fontSize: isMobile ? "16px" : "18px", width: isMobile ? "100%" : "auto", textAlign: "center" }}>
+              <a className="button-polish cta-primary" href="#contacte" style={{ color: "#fff", textDecoration: "none", border: "1px solid rgba(255,255,255,0.55)", padding: isMobile ? "14px 20px" : "16px 28px", borderRadius: "12px", fontSize: isMobile ? "16px" : "18px", width: isMobile ? "100%" : "auto", textAlign: "center" }}>
                 {c.navContact}
               </a>
             </div>
@@ -673,7 +745,7 @@ export default function App() {
 
           <div style={{ maxWidth: "1520px", margin: "0 auto", padding: isMobile ? "40px 20px 74px 20px" : "90px 54px 120px 54px" }}>
             <div style={{ maxWidth: "860px", margin: "0 auto", textAlign: "center" }}>
-              <h1 style={{ fontSize: isMobile ? "44px" : "78px", lineHeight: 1.03, fontWeight: 500, letterSpacing: "-0.055em", margin: 0 }}>
+              <h1 className="gradient-text" style={{ fontSize: isMobile ? "44px" : "78px", lineHeight: 1.03, fontWeight: 500, letterSpacing: "-0.055em", margin: 0 }}>
                 {c.heroTitle}
               </h1>
 
@@ -686,7 +758,7 @@ export default function App() {
               </div>
 
               <div style={{ marginTop: "32px", display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}>
-                <a href="#contacte" className="button-polish" style={{ color: "#fff", textDecoration: "none", border: "1px solid rgba(255,255,255,0.65)", padding: isMobile ? "14px 22px" : "16px 28px", borderRadius: "12px" }}>
+                <a href="#contacte" className="button-polish cta-primary" style={{ color: "#fff", textDecoration: "none", border: "1px solid rgba(255,255,255,0.65)", padding: isMobile ? "14px 22px" : "16px 28px", borderRadius: "12px" }}>
                   {c.navContact}
                 </a>
 
@@ -775,6 +847,7 @@ export default function App() {
               </div>
 
               <h2
+                className="gradient-text"
                 style={{
                   fontSize: isMobile ? "34px" : "58px",
                   lineHeight: 1.08,
