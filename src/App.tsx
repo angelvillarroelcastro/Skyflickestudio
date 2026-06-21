@@ -686,6 +686,27 @@ export default function App() {
           filter: brightness(1.04);
         }
 
+        /* Aparición suave de secciones al hacer scroll (progresivo: si el
+           navegador no lo soporta, todo se ve normal, nada queda oculto) */
+        @keyframes revealUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+        @supports (animation-timeline: view()) {
+          .reveal-on-scroll {
+            animation: revealUp linear both;
+            animation-timeline: view();
+            animation-range: entry 5% cover 20%;
+          }
+        }
+
+        /* Brillo que cruza el CTA dorado al pasar el ratón */
+        .cta-primary { position: relative; overflow: hidden; }
+        .cta-primary::after {
+          content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
+          background: linear-gradient(100deg, transparent, rgba(255,255,255,0.45), transparent);
+          transform: skewX(-18deg); pointer-events: none;
+        }
+        .cta-primary:hover::after { animation: ctaSheen 750ms ease; }
+        @keyframes ctaSheen { from { left: -60%; } to { left: 130%; } }
+
         @media (prefers-reduced-motion: reduce) {
           *, *::before, *::after { animation: none !important; transition: none !important; }
           html { scroll-behavior: auto; }
@@ -770,7 +791,7 @@ export default function App() {
             </div>
           </div>
         </section>
-                <section style={{ background: "#041015", padding: isMobile ? "22px 0 36px 0" : "26px 0 56px 0", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+                <section className="reveal-on-scroll" style={{ background: "#041015", padding: isMobile ? "22px 0 36px 0" : "26px 0 56px 0", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
           <div style={{ maxWidth: "1520px", margin: "0 auto", padding: isMobile ? "0 20px" : "0 54px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "18px", marginBottom: isMobile ? "22px" : "28px" }}>
               <div style={{ color: "#d8d0b0", fontSize: isMobile ? "13px" : "15px", letterSpacing: "0.2em" }}>{c.servicesEyebrow}</div>
@@ -816,6 +837,7 @@ export default function App() {
         </section>
                 <section
           id="contacte"
+          className="reveal-on-scroll"
           style={{
             minHeight: isMobile ? "auto" : "560px",
             background:
@@ -1075,6 +1097,7 @@ export default function App() {
         </section>
 
         <footer
+          className="reveal-on-scroll"
           style={{
             background: "#02080b",
             padding: isMobile ? "32px 0" : "40px 0",
