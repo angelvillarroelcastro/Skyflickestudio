@@ -831,6 +831,8 @@ export default function App() {
                     alt={`${card.title} — Skyflick Studio, drone services in Mallorca`}
                     loading="lazy"
                     decoding="async"
+                    width={1200}
+                    height={800}
                     style={{
                       display: "block",
                       width: "100%",
