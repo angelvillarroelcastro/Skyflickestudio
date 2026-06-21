@@ -438,6 +438,14 @@ export default function App() {
   const [message, setMessage] = useState("");
   const c = COPY[lang];
   const isMobile = useIsMobile();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 30);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     const inter = document.createElement("link");
@@ -719,33 +727,42 @@ export default function App() {
       </a>
 
       <div className="fade-up" style={{ fontFamily: "Inter, sans-serif", background: "#030607", color: "#f5f5f5" }}>
-        <section
+        <div
           style={{
-            minHeight: isMobile ? "auto" : "820px",
-            position: "relative",
-            background:
-              "linear-gradient(90deg, rgba(2,7,10,0.88) 0%, rgba(2,7,10,0.62) 36%, rgba(2,7,10,0.22) 62%), url('https://images.pexels.com/photos/36532574/pexels-photo-36532574.jpeg') center/cover no-repeat",
+            position: "sticky",
+            top: 0,
+            zIndex: 40,
+            background: scrolled ? "rgba(3,7,10,0.82)" : "transparent",
+            backdropFilter: scrolled ? "blur(12px)" : "none",
+            WebkitBackdropFilter: scrolled ? "blur(12px)" : "none",
+            borderBottom: scrolled ? "1px solid rgba(255,255,255,0.08)" : "1px solid transparent",
+            transition: "background 260ms ease, border-color 260ms ease",
           }}
         >
-                    <div
+          <div
             style={{
               maxWidth: "1520px",
               margin: "0 auto",
-              padding: isMobile ? "24px 20px" : "34px 54px",
+              padding: isMobile
+                ? (scrolled ? "12px 20px" : "24px 20px")
+                : (scrolled ? "14px 54px" : "34px 54px"),
               display: "flex",
               justifyContent: "space-between",
-              alignItems: "flex-start",
+              alignItems: isMobile ? "flex-start" : "center",
               gap: "20px",
               flexDirection: isMobile ? "column" : "row",
+              transition: "padding 260ms ease",
             }}
           >
             <div>
-              <div className="gradient-text" style={{ fontSize: isMobile ? "52px" : "88px", lineHeight: 0.9, fontWeight: 800, letterSpacing: "-0.06em" }}>
+              <div className="gradient-text" style={{ fontSize: isMobile ? (scrolled ? "30px" : "52px") : (scrolled ? "34px" : "88px"), lineHeight: 0.9, fontWeight: 800, letterSpacing: "-0.06em", transition: "font-size 260ms ease" }}>
                 Skyflick
               </div>
-              <div style={{ fontSize: isMobile ? "14px" : "22px", letterSpacing: isMobile ? "0.28em" : "0.42em", marginTop: "10px", marginLeft: isMobile ? "68px" : "150px", opacity: 0.94 }}>
-                STUDIO
-              </div>
+              {!scrolled && (
+                <div style={{ fontSize: isMobile ? "14px" : "22px", letterSpacing: isMobile ? "0.28em" : "0.42em", marginTop: "10px", marginLeft: isMobile ? "68px" : "150px", opacity: 0.94 }}>
+                  STUDIO
+                </div>
+              )}
             </div>
 
             <div style={{ display: "flex", alignItems: isMobile ? "flex-start" : "center", gap: isMobile ? "18px" : "28px", flexDirection: isMobile ? "column" : "row", width: isMobile ? "100%" : "auto" }}>
@@ -763,6 +780,16 @@ export default function App() {
               </a>
             </div>
           </div>
+        </div>
+
+        <section
+          style={{
+            minHeight: isMobile ? "auto" : "760px",
+            position: "relative",
+            background:
+              "linear-gradient(90deg, rgba(2,7,10,0.88) 0%, rgba(2,7,10,0.62) 36%, rgba(2,7,10,0.22) 62%), url('https://images.pexels.com/photos/36532574/pexels-photo-36532574.jpeg') center/cover no-repeat",
+          }}
+        >
 
           <div style={{ maxWidth: "1520px", margin: "0 auto", padding: isMobile ? "40px 20px 74px 20px" : "90px 54px 120px 54px" }}>
             <div style={{ maxWidth: "860px", margin: "0 auto", textAlign: "center" }}>
@@ -781,11 +808,6 @@ export default function App() {
               <div style={{ marginTop: "32px", display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}>
                 <a href="#contacte" className="button-polish cta-primary" style={{ color: "#fff", textDecoration: "none", border: "1px solid rgba(255,255,255,0.65)", padding: isMobile ? "14px 22px" : "16px 28px", borderRadius: "12px" }}>
                   {c.navContact}
-                </a>
-
-                <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="button-polish" style={{ display: "inline-flex", alignItems: "center", gap: "10px", color: "#fff", textDecoration: "none", border: "1px solid rgba(255,255,255,0.65)", padding: isMobile ? "14px 22px" : "16px 28px", borderRadius: "12px" }}>
-                  <WhatsAppIcon size={18} />
-                  {c.whatsappButton}
                 </a>
               </div>
             </div>
