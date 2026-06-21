@@ -758,7 +758,7 @@ export default function App() {
             }}
           >
             <div>
-              <div className="gradient-text" style={{ fontSize: isMobile ? (scrolled ? "30px" : "52px") : (scrolled ? "34px" : "88px"), lineHeight: 0.9, fontWeight: 800, letterSpacing: "-0.06em", transition: "font-size 260ms ease" }}>
+              <div style={{ fontSize: isMobile ? (scrolled ? "30px" : "52px") : (scrolled ? "34px" : "88px"), lineHeight: 0.9, fontWeight: 800, letterSpacing: "-0.06em", transition: "font-size 260ms ease" }}>
                 Skyflick
               </div>
               {!scrolled && (
@@ -778,7 +778,7 @@ export default function App() {
                 ))}
               </div>
 
-              <a className="button-polish cta-primary" href="#contacte" style={{ color: "#fff", textDecoration: "none", border: "1px solid rgba(255,255,255,0.55)", padding: isMobile ? "14px 20px" : "16px 28px", borderRadius: "12px", fontSize: isMobile ? "16px" : "18px", width: isMobile ? "100%" : "auto", textAlign: "center" }}>
+              <a className="button-polish" href="#contacte" style={{ color: "#fff", textDecoration: "none", border: "1px solid rgba(255,255,255,0.55)", padding: isMobile ? "14px 20px" : "16px 28px", borderRadius: "12px", fontSize: isMobile ? "16px" : "18px", width: isMobile ? "100%" : "auto", textAlign: "center" }}>
                 {c.navContact}
               </a>
             </div>
@@ -796,7 +796,7 @@ export default function App() {
 
           <div style={{ maxWidth: "1520px", margin: "0 auto", padding: isMobile ? "40px 20px 74px 20px" : "90px 54px 120px 54px" }}>
             <div style={{ maxWidth: "860px", margin: "0 auto", textAlign: "center" }}>
-              <h1 className="gradient-text" style={{ fontSize: isMobile ? "44px" : "78px", lineHeight: 1.03, fontWeight: 500, letterSpacing: "-0.055em", margin: 0 }}>
+              <h1 style={{ fontSize: isMobile ? "44px" : "78px", lineHeight: 1.03, fontWeight: 500, letterSpacing: "-0.055em", margin: 0 }}>
                 {c.heroTitle}
               </h1>
 
@@ -809,7 +809,7 @@ export default function App() {
               </div>
 
               <div style={{ marginTop: "32px", display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}>
-                <a href="#contacte" className="button-polish cta-primary" style={{ color: "#fff", textDecoration: "none", border: "1px solid rgba(255,255,255,0.65)", padding: isMobile ? "14px 22px" : "16px 28px", borderRadius: "12px" }}>
+                <a href="#contacte" className="button-polish" style={{ color: "#fff", textDecoration: "none", border: "1px solid rgba(255,255,255,0.65)", padding: isMobile ? "14px 22px" : "16px 28px", borderRadius: "12px" }}>
                   {c.navContact}
                 </a>
               </div>
@@ -900,7 +900,6 @@ export default function App() {
               </div>
 
               <h2
-                className="gradient-text"
                 style={{
                   fontSize: isMobile ? "34px" : "58px",
                   lineHeight: 1.08,
