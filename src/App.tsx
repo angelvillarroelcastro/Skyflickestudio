@@ -492,7 +492,8 @@ export default function App() {
         text: c.service3Text,
         footer: c.service3Footer,
         image:
-          "https://eos.com/wp-content/uploads/2024/03/multispectral-image-index-ndvi.png.webp",
+          // Imagen propia: mapa de vigor (NDVI) de un vuelo multiespectral nuestro.
+          `${process.env.PUBLIC_URL}/img/servicio-cartografia.jpg`,
       },
     ],
     [c]
